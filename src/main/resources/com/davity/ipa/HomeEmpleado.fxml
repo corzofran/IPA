@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="674.0" prefWidth="1168.0" style="-fx-background-color: #FF6D6D;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.davity.ipa.Controllers.HomeEmpleado">
+   <children>
+      <Pane layoutX="-5.0" layoutY="-9.0" prefHeight="147.0" prefWidth="1178.0" style="-fx-background-color: #FF5050;">
+         <children>
+            <ImageView fx:id="inventario" fitHeight="99.0" fitWidth="276.0" layoutX="30.0" layoutY="44.0" onMouseClicked="#onClickInventario" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ButtonInventario.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="agregar" fitHeight="90.0" fitWidth="276.0" layoutX="350.0" layoutY="44.0" onMouseClicked="#onClickAgregar" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ButtonAgregar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="eliminar" fitHeight="90.0" fitWidth="258.0" layoutX="676.0" layoutY="43.0" onMouseClicked="#onClickEliminar" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ButtonEliminar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="inicio" fitHeight="97.0" fitWidth="174.0" layoutX="975.0" layoutY="34.0" onMouseClicked="#onClickInicio" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ButtonInicioBrillo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <TextField fx:id="buscador" layoutX="80.0" layoutY="363.0" prefHeight="58.0" prefWidth="437.0" />
+      <Text fill="WHITE" layoutX="64.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventario de productos">
+         <font>
+            <Font name="Arial Bold" size="53.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="63.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="y alimentos">
+         <font>
+            <Font name="Arial Bold" size="53.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="18.0" layoutY="639.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido:">
+         <font>
+            <Font name="System Bold" size="52.0" />
+         </font>
+      </Text>
+      <Text fx:id="usuario" fill="WHITE" layoutX="321.0" layoutY="640.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font name="System Bold" size="52.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="buscar" fitHeight="90.0" fitWidth="248.0" layoutX="175.0" layoutY="425.0" onMouseClicked="#onClickbuscar" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/ButtonBuscar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="cerrarSesion" fitHeight="82.0" fitWidth="243.0" layoutX="978.0" layoutY="584.0" onMouseClicked="#onClickCerrarSesion" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/ButtonCerrarSesion.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="272.0" fitWidth="258.0" layoutX="668.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/logo1.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

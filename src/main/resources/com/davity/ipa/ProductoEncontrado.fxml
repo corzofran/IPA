@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="674.0" prefWidth="1168.0" style="-fx-background-color: #FF6D6D;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.davity.ipa.Controllers.ProductoEncontrado">
+   <children>
+      <Pane layoutY="-2.0" prefHeight="147.0" prefWidth="1183.0" style="-fx-background-color: #FF5050;">
+         <children>
+            <ImageView fx:id="inicio" fitHeight="97.0" fitWidth="182.0" layoutX="974.0" layoutY="35.0" onMouseClicked="#onClickInicio" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ButtonInicioBrillo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Text fill="WHITE" layoutX="29.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Producto encontrado">
+         <font>
+            <Font name="System Bold" size="52.0" />
+         </font>
+      </Text>
+      <Label fx:id="producto" alignment="CENTER" contentDisplay="TOP" layoutX="37.0" layoutY="280.0" prefHeight="54.0" prefWidth="305.0" style="-fx-background-color: #FFE699;" textAlignment="CENTER" textFill="#0000008f">
+         <font>
+            <Font size="29.0" />
+         </font>
+         <effect>
+            <DropShadow offsetY="5.0">
+               <color>
+                  <Color opacity="0.41832828521728516" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Label>
+      <ImageView fx:id="cerrarSesion" fitHeight="82.0" fitWidth="243.0" layoutX="988.0" layoutY="594.0" onMouseClicked="#onClickCerrarSesion" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/ButtonCerrarSesion.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="23.0" layoutY="643.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido:">
+         <font>
+            <Font name="System Bold" size="52.0" />
+         </font>
+      </Text>
+      <Text fx:id="usuario" fill="WHITE" layoutX="331.0" layoutY="650.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font name="System Bold" size="52.0" />
+         </font>
+      </Text>
+      <Label fx:id="cantidad" alignment="CENTER" contentDisplay="TOP" layoutX="37.0" layoutY="352.0" prefHeight="54.0" prefWidth="305.0" style="-fx-background-color: #FFE699;" textAlignment="CENTER" textFill="#0000008f">
+         <font>
+            <Font size="29.0" />
+         </font>
+         <effect>
+            <DropShadow offsetY="5.0">
+               <color>
+                  <Color opacity="0.41832828521728516" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Label>
+      <Label fx:id="clasificacion" alignment="CENTER" contentDisplay="TOP" layoutX="37.0" layoutY="427.0" prefHeight="54.0" prefWidth="305.0" style="-fx-background-color: #FFE699;" textAlignment="CENTER" textFill="#0000008f">
+         <font>
+            <Font size="29.0" />
+         </font>
+         <effect>
+            <DropShadow offsetY="5.0">
+               <color>
+                  <Color opacity="0.41832828521728516" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Label>
+      <ImageView fitHeight="189.0" fitWidth="182.0" layoutX="385.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/cajaflecha.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="267.0" fitWidth="263.0" layoutX="624.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/logo1.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="259.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Piezas">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="inventario" fitHeight="99.0" fitWidth="276.0" layoutX="30.0" layoutY="39.0" onMouseClicked="#onClickInventario" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/ButtonInventario.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="agregar" fitHeight="90.0" fitWidth="276.0" layoutX="350.0" layoutY="39.0" onMouseClicked="#onClickAgregar" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/ButtonAgregar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="eliminar" fitHeight="90.0" fitWidth="258.0" layoutX="676.0" layoutY="38.0" onMouseClicked="#onClickEliminar" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/ButtonEliminar.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
