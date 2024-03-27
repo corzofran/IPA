@@ -1,50 +1,35 @@
 package com.davity.ipa.Controllers;
 
+import com.davity.ipa.App;
 import com.davity.ipa.Models.Beneficiario;
+import com.davity.ipa.Models.Persona;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
-public class Beneficiarios {
-    @FXML
-    private TextField NumeroTelefono;
-
-    @FXML
-    private ImageView anadir;
+public class Beneficiarios implements Initializable {
 
     @FXML
     private ImageView beneficiario;
 
     @FXML
-    private ImageView crear;
-
-    @FXML
-    private TableColumn<Beneficiario, String> curp;
-
-    @FXML
-    private TableColumn<Beneficiario, String> domicilio;
-
-    @FXML
-    private ImageView eliminar;
-
-    @FXML
     private ImageView empleado;
-
-    @FXML
-    private TextField ingresarCurp;
 
     @FXML
     private ImageView inicio;
@@ -53,40 +38,50 @@ public class Beneficiarios {
     private ImageView inventario;
 
     @FXML
-    private TextField lugarDomicilio;
-
-    @FXML
-    private ImageView modificar;
-
-    @FXML
-    private TableColumn<Beneficiario, String> nombre;
-
-    @FXML
-    private TextField nombreCompleto;
-
-    @FXML
     private ImageView proveedor;
+
+    @FXML
+    private ImageView btnAnadirBeneficiario;
+
+    @FXML
+    private ImageView btnEliminarBeneficiario;
+
+    @FXML
+    private ImageView btnModificarDatos;
 
     @FXML
     private TableView<Beneficiario> tablaBeneficiarios;
 
     @FXML
-    private TableColumn<Beneficiario, String> telefono;
+    private TableColumn telefono;
 
     @FXML
-    void onClickAnadirBeneficiario(MouseEvent event) {
+    private TableColumn nombre;
 
-}
+    @FXML
+    private TableColumn curp;
+
+    @FXML
+    private TableColumn domicilio;
+
+    private ObservableList<Beneficiario> Beneficiarios;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Beneficiarios = FXCollections.observableArrayList();
+        this.tablaBeneficiarios.setItems(Beneficiarios);
+
+        this.nombre.setCellValueFactory(new PropertyValueFactory("nombre"));
+        this.telefono.setCellValueFactory(new PropertyValueFactory("numeroTelefono"));
+        this.domicilio.setCellValueFactory(new PropertyValueFactory("direccion"));
+        this.curp.setCellValueFactory(new PropertyValueFactory("curp"));
+    }
+
 
     @FXML
     void onClickBeneficiario(MouseEvent event) {
-
     }
 
-    @FXML
-    void onClickCrearBeneficiario(MouseEvent event) {
-
-    }
 
     @FXML
     void onClickEliminar(MouseEvent event) {
@@ -116,13 +111,12 @@ public class Beneficiarios {
     @FXML
     void onClickProveedor(MouseEvent event) {
 
-
     }
 
-    Connection con;
-    PreparedStatement pst;
-    int myIndex;
-    int id;
+    public void OnclickAnadirBeneficiario(MouseEvent mouseEvent) {
+        App.newStage("AgregarBeneficiario","Agrega los datos");
+    }
 }
+
 
 

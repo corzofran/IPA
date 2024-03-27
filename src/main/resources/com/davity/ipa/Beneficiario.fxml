@@ -3,15 +3,12 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="674.0" prefWidth="1168.0" style="-fx-background-color: #F6C19C;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.davity.ipa.Controllers.Beneficiarios">
    <children>
@@ -37,9 +34,9 @@
                   <Image url="@../../../Imagenes/ButtonProveedor.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="inicio" fitHeight="117.0" fitWidth="228.0" layoutX="947.0" layoutY="22.0" onMouseClicked="#onClickEliminar" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="inicio" fitHeight="87.0" fitWidth="215.0" layoutX="958.0" layoutY="37.0" onMouseClicked="#onClickEliminar" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Imagenes/ButtonInicioBrillo.png" />
+                  <Image url="@../../../Imagenes/ButtonInicio.png" />
                </image>
             </ImageView>
          </children>
@@ -65,50 +62,21 @@
                               <TableColumn fx:id="telefono" prefWidth="179.20001220703125" text="Numero de telefono" />
                           </columns>
                         </TableView>
-                        <Pane layoutX="850.0" prefHeight="487.0" prefWidth="291.0">
+                        <Pane layoutX="838.0" prefHeight="487.0" prefWidth="303.0">
                            <children>
-                              <Text layoutX="8.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre completo">
-                                 <font>
-                                    <Font name="System Bold" size="20.0" />
-                                 </font>
-                              </Text>
-                              <TextField fx:id="nombreCompleto" layoutX="8.0" layoutY="46.0" prefHeight="32.0" prefWidth="260.0" />
-                              <Text layoutX="9.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lugar de domicilio">
-                                 <font>
-                                    <Font name="System Bold" size="20.0" />
-                                 </font>
-                              </Text>
-                              <TextField fx:id="lugarDomicilio" layoutX="9.0" layoutY="117.0" prefHeight="32.0" prefWidth="260.0" />
-                              <Text layoutX="9.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresa curp">
-                                 <font>
-                                    <Font name="System Bold" size="20.0" />
-                                 </font>
-                              </Text>
-                              <TextField fx:id="ingresarCurp" layoutX="9.0" layoutY="191.0" prefHeight="32.0" prefWidth="260.0" />
-                              <Text layoutX="9.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresa numero de telefono" wrappingWidth="268.5342254638673">
-                                 <font>
-                                    <Font name="System Bold" size="20.0" />
-                                 </font>
-                              </Text>
-                              <TextField fx:id="NumeroTelefono" layoutX="9.0" layoutY="267.0" prefHeight="32.0" prefWidth="260.0" />
-                              <ImageView fx:id="anadir" fitHeight="32.0" fitWidth="221.0" layoutX="33.0" layoutY="313.0" onMouseClicked="#onClickAnadirBeneficiario" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Imagenes/ButtonAñadirBeneficiario.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="modificar" fitHeight="45.0" fitWidth="221.0" layoutX="33.0" layoutY="348.0" onMouseClicked="#onClickModificarDatos" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Imagenes/ButtonModificardatos.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="eliminar" fitHeight="45.0" fitWidth="221.0" layoutX="33.0" layoutY="390.0" onMouseClicked="#onClickEliminarBeneficiario" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="btnEliminarBeneficiario" fitHeight="95.0" fitWidth="216.0" layoutX="44.0" layoutY="340.0" onMouseClicked="#onClickEliminarBeneficiario" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../Imagenes/ButtonEliminarBeneficiario.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fx:id="crear" fitHeight="45.0" fitWidth="221.0" layoutX="33.0" layoutY="433.0" onMouseClicked="#onClickCrearBeneficiario" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="btnModificarDatos" fitHeight="95.0" fitWidth="216.0" layoutX="44.0" layoutY="206.0" onMouseClicked="#onClickModificarDatos" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../Imagenes/ButtonCrearBeneficiario.png" />
+                                    <Image url="@../../../Imagenes/ButtonModificardatos.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="btnAnadirBeneficiario" fitHeight="95.0" fitWidth="216.0" layoutX="44.0" layoutY="70.0" onMouseClicked="#OnclickAnadirBeneficiario" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../Imagenes/ButtonAñadirBeneficiario.png" />
                                  </image>
                               </ImageView>
                            </children>

@@ -5,22 +5,16 @@ import javafx.beans.property.StringProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
+import java.util.Objects;
+
 public class Persona {
 
- protected final StringProperty nombre;
- protected final IntegerProperty numeroTelefono;
- protected final StringProperty direccion;
- protected final StringProperty correo;
+ protected String nombre;
+ protected int numeroTelefono;
+ protected String direccion;
+ protected String correo;
 
-
-public Persona(){
-    nombre=new SimpleStringProperty(this,"nombre");
-    numeroTelefono=new SimpleIntegerProperty(this,"numeroTelefono");
-    direccion=new SimpleStringProperty(this,"direccion");
-    correo=new SimpleStringProperty(this,"correo");
-}
-
-    public Persona(StringProperty nombre, IntegerProperty numeroTelefono, StringProperty direccion, StringProperty correo) {
+    public Persona(String nombre, int numeroTelefono, String direccion, String correo) {
         this.nombre = nombre;
         this.numeroTelefono = numeroTelefono;
         this.direccion = direccion;
@@ -28,48 +22,47 @@ public Persona(){
     }
 
     public String getNombre() {
-        return nombre.get();
+        return nombre;
     }
 
     public void setNombre(String nombre) {
-        this.nombre.set(nombre);
+        this.nombre = nombre;
     }
 
     public int getNumeroTelefono() {
-        return numeroTelefono.get();
-    }
-
-    public IntegerProperty numeroTelefonoProperty() {
         return numeroTelefono;
     }
 
     public void setNumeroTelefono(int numeroTelefono) {
-        this.numeroTelefono.set(numeroTelefono);
+        this.numeroTelefono = numeroTelefono;
     }
 
     public String getDireccion() {
-        return direccion.get();
-    }
-
-    public StringProperty direccionProperty() {
         return direccion;
     }
 
     public void setDireccion(String direccion) {
-        this.direccion.set(direccion);
+        this.direccion = direccion;
     }
 
     public String getCorreo() {
-        return correo.get();
-    }
-
-    public StringProperty correoProperty() {
         return correo;
     }
 
     public void setCorreo(String correo) {
-        this.correo.set(correo);
+        this.correo = correo;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Persona persona = (Persona) o;
+        return numeroTelefono == persona.numeroTelefono && Objects.equals(nombre, persona.nombre) && Objects.equals(direccion, persona.direccion) && Objects.equals(correo, persona.correo);
+    }
 
+    @Override
+    public int hashCode() {
+        return 0;
+    }
 }
