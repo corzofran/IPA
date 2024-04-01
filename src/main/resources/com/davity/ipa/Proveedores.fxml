@@ -1,14 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.davity.ipa.Proveedores"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="674.0" prefWidth="1168.0" style="-fx-background-color: #F6C19C;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.davity.ipa.Controllers.Proveedores">
+   <children>
+      <Pane layoutX="-1.0" layoutY="-1.0" prefHeight="147.0" prefWidth="1178.0" style="-fx-background-color: #E59056;">
+         <children>
+            <ImageView fx:id="inventario" fitHeight="70.0" fitWidth="247.0" layoutX="17.0" layoutY="44.0" onMouseClicked="#onClickInventario" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ButtonInventario.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="beneficiario" fitHeight="87.0" fitWidth="221.0" layoutX="255.0" layoutY="36.0" onMouseClicked="#onClickBeneficiario" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ButtonBeneficiario.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="empleado" fitHeight="87.0" fitWidth="221.0" layoutX="489.0" layoutY="37.0" onMouseClicked="#onClickEmpleado" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ButtonEmpleado.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="proveedor" fitHeight="87.0" fitWidth="221.0" layoutX="724.0" layoutY="37.0" onMouseClicked="#onClickProveedor" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ButtonProveedor.png" />
+               </image>
+               <effect>
+                  <DropShadow height="56.09" radius="27.545" spread="0.72" width="56.09">
+                     <color>
+                        <Color red="1.0" green="0.8424999713897705" blue="0.3700000047683716" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </ImageView>
+            <ImageView fx:id="inicio" fitHeight="87.0" fitWidth="215.0" layoutX="958.0" layoutY="37.0" onMouseClicked="#onClickEliminar" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ButtonInicio.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <TableView fx:id="tablaProveedores" layoutX="23.0" layoutY="168.0" onMouseClicked="#seleccionar" prefHeight="487.0" prefWidth="839.0" style="-fx-background-color: #ADB9CA;">
+         <columns>
+            <TableColumn fx:id="nombre" prefWidth="218.40004807710648" style="-fx-background-color: #B4C7E7;" text="Nombre completo" />
+            <TableColumn fx:id="domicilio" prefWidth="234.40005493164062" style="-fx-background-color: #B4C7E7;" text="Lugar de domicilio" />
+            <TableColumn fx:id="correo" prefWidth="193.59994506835938" style="-fx-background-color: #B4C7E7;" text="Correo electronico" />
+            <TableColumn fx:id="telefono" prefWidth="179.20001220703125" style="-fx-background-color: #B4C7E7;" text="Numero de telefono" />
+         </columns>
+         <effect>
+            <DropShadow offsetX="-4.0" offsetY="4.0">
+               <color>
+                  <Color opacity="0.2917932868003845" />
+               </color>
+            </DropShadow>
+         </effect>
+      </TableView>
+      <Pane layoutX="862.0" layoutY="169.0" prefHeight="487.0" prefWidth="303.0" style="-fx-background-color: #FFD85D;">
+         <children>
+            <ImageView fx:id="btnAnadirProveedor" fitHeight="56.0" fitWidth="240.0" layoutX="32.0" layoutY="333.0" onMouseClicked="#OnclickAnadirProveedor" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ButtonAgregarProveedor.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="txtNombre" layoutX="20.0" layoutY="55.0" prefHeight="33.0" prefWidth="251.0" />
+            <TextField fx:id="txtNumero" layoutX="21.0" layoutY="132.0" prefHeight="33.0" prefWidth="251.0" />
+            <Text layoutX="20.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre completo">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Text>
+            <Text layoutX="21.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero telefonico">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Text>
+            <TextField fx:id="txtDireccion" layoutX="22.0" layoutY="210.0" prefHeight="33.0" prefWidth="251.0" />
+            <Text layoutX="22.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Direccion">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Text>
+            <TextField fx:id="txtCorreo" layoutX="22.0" layoutY="285.0" prefHeight="33.0" prefWidth="251.0" />
+            <Text layoutX="22.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo electronico">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Text>
+            <ImageView fx:id="btnModificar" fitHeight="56.0" fitWidth="240.0" layoutX="32.0" layoutY="381.0" onMouseClicked="#OnclickModificarDatos" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ButtonModificarProveedor.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btnEliminarProveedor" fitHeight="56.0" fitWidth="240.0" layoutX="33.0" layoutY="433.0" onMouseClicked="#OnclickEliminar" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ButtonEliminarProveedor.png" />
+               </image>
+            </ImageView>
+         </children>
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color opacity="0.29483285546302795" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Pane>
+   </children>
+   <effect>
+      <DropShadow offsetX="5.0" offsetY="5.0" />
+   </effect>
 </AnchorPane>

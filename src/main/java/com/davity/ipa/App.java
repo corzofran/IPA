@@ -6,10 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class App extends Application {
     private static Stage stageView;
@@ -22,6 +25,7 @@ public class App extends Application {
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
+        stage.setResizable(false);
     }
 
     public static void newStage(String fxml, String title) {
@@ -37,8 +41,9 @@ public class App extends Application {
             stageView.initOwner(stageRoot);
             stageView.initModality(Modality.APPLICATION_MODAL);
             stageView.showAndWait();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } catch (IOException ex) {
+            //throw new RuntimeException(e);
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

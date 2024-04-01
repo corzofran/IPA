@@ -10,11 +10,12 @@ import java.util.Objects;
 public class Persona {
 
  protected String nombre;
- protected int numeroTelefono;
+ protected String numeroTelefono;
  protected String direccion;
  protected String correo;
 
-    public Persona(String nombre, int numeroTelefono, String direccion, String correo) {
+
+    public Persona(String nombre, String numeroTelefono, String direccion, String correo) {
         this.nombre = nombre;
         this.numeroTelefono = numeroTelefono;
         this.direccion = direccion;
@@ -29,11 +30,11 @@ public class Persona {
         this.nombre = nombre;
     }
 
-    public int getNumeroTelefono() {
+    public String getNumeroTelefono() {
         return numeroTelefono;
     }
 
-    public void setNumeroTelefono(int numeroTelefono) {
+    public void setNumeroTelefono(String numeroTelefono) {
         this.numeroTelefono = numeroTelefono;
     }
 
@@ -51,18 +52,5 @@ public class Persona {
 
     public void setCorreo(String correo) {
         this.correo = correo;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Persona persona = (Persona) o;
-        return numeroTelefono == persona.numeroTelefono && Objects.equals(nombre, persona.nombre) && Objects.equals(direccion, persona.direccion) && Objects.equals(correo, persona.correo);
-    }
-
-    @Override
-    public int hashCode() {
-        return 0;
     }
 }

@@ -99,7 +99,8 @@ public class HomeEmpleado {
 
     }
 
-    Empleado emple = new Empleado("david","1234");
+    Empleado emple = new Empleado("david","1234","","","","");
+
     @FXML
     void initialize() {
         usuario.setText(emple.getId());

@@ -65,7 +65,7 @@ public class ProductoNoEncontrado {
 
     @FXML
     void initialize() {
-        Empleado emple = new Empleado("david","1234");
+         Empleado emple = new Empleado("david","1234","","","","");
         usuario.setText(emple.getId());
     }
 

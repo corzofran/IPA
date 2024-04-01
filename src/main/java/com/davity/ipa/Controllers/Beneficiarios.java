@@ -1,32 +1,34 @@
 package com.davity.ipa.Controllers;
 
-import com.davity.ipa.App;
 import com.davity.ipa.Models.Beneficiario;
-import com.davity.ipa.Models.Persona;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Logger;
 
 public class Beneficiarios implements Initializable {
 
     @FXML
     private ImageView beneficiario;
+
+    @FXML
+    private ImageView btnAnadirBeneficiario;
+
+    @FXML
+    private ImageView btnEliminarBeneficiario;
+
+    @FXML
+    private ImageView btnModificarDatos;
 
     @FXML
     private ImageView empleado;
@@ -41,47 +43,175 @@ public class Beneficiarios implements Initializable {
     private ImageView proveedor;
 
     @FXML
-    private ImageView btnAnadirBeneficiario;
+    private TextField txtNombre;
 
     @FXML
-    private ImageView btnEliminarBeneficiario;
+    private TextField txtNumero;
 
     @FXML
-    private ImageView btnModificarDatos;
+    private TextField txtDireccion;
+
+    @FXML
+    private TextField txtCurp;
 
     @FXML
     private TableView<Beneficiario> tablaBeneficiarios;
 
     @FXML
-    private TableColumn telefono;
+    private TableColumn<Beneficiario, String> nombre;
 
     @FXML
-    private TableColumn nombre;
+    private TableColumn<Beneficiario, String> telefono;
 
     @FXML
-    private TableColumn curp;
+    private TableColumn<Beneficiario, String> domicilio;
 
     @FXML
-    private TableColumn domicilio;
+    private TableColumn<Beneficiario, String> curp;
 
-    private ObservableList<Beneficiario> Beneficiarios;
+    private ObservableList<Beneficiario> beneficiarios;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Beneficiarios = FXCollections.observableArrayList();
-        this.tablaBeneficiarios.setItems(Beneficiarios);
+        beneficiarios = FXCollections.observableArrayList();
+        tablaBeneficiarios.setItems(beneficiarios);
 
-        this.nombre.setCellValueFactory(new PropertyValueFactory("nombre"));
-        this.telefono.setCellValueFactory(new PropertyValueFactory("numeroTelefono"));
-        this.domicilio.setCellValueFactory(new PropertyValueFactory("direccion"));
-        this.curp.setCellValueFactory(new PropertyValueFactory("curp"));
+
+        nombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        telefono.setCellValueFactory(new PropertyValueFactory<>("numeroTelefono"));
+        domicilio.setCellValueFactory(new PropertyValueFactory<>("direccion"));
+        curp.setCellValueFactory(new PropertyValueFactory<>("curp"));
+        tablaBeneficiarios.getColumns().addAll(nombre,telefono,domicilio,curp);
+
+    }
+
+    @FXML
+    void OnclickAnadirBeneficiario(MouseEvent event) {
+
+            String name = this.txtNombre.getText();
+            String number = this.txtNumero.getText();
+            String direccion = this.txtDireccion.getText();
+            String clavaUnica = this.txtCurp.getText();
+            String correo = null;
+
+            Beneficiario beneficiary = new Beneficiario(name, number, direccion, clavaUnica, correo);
+
+
+            boolean existe = false;
+            for (Beneficiario p : beneficiarios) {
+                if (p.getCurp().equals(beneficiary.getCurp()) || p.getNombre().equals(beneficiary.getNombre())) {
+                    existe = true;
+                    break;
+                }
+            }
+            if (existe) {
+                // Mostrar una alerta indicando que la persona ya existe
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Advertencia");
+                alert.setHeaderText(null);
+                alert.setContentText("Este beneficiario ya existe");
+                alert.showAndWait();
+            } else {
+                // Agregar la persona a la lista y mostrar una alerta indicando que la persona fue agregada
+                beneficiarios.add(beneficiary);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Información");
+                alert.setHeaderText(null);
+                alert.setContentText("Beneficiario agregado");
+                alert.showAndWait();
+
+                // Limpiar los campos de texto después de agregar la persona
+                txtCurp.clear();
+                txtDireccion.clear();
+                txtNombre.clear();
+                txtNumero.clear();
+            }
+    }
+
+    @FXML
+    void seleccionar(MouseEvent event) {
+        Beneficiario b =this.tablaBeneficiarios.getSelectionModel().getSelectedItem();
+
+        if(b !=null){
+        this.txtNombre.setText(b.getNombre());
+        this.txtNumero.setText(b.getNumeroTelefono());
+        this.txtDireccion.setText(b.getDireccion());
+        this.txtCurp.setText(b.getCurp());
+        }
+    }
+
+    @FXML
+    void onClickModificarDatos(MouseEvent event) {
+
+        Beneficiario b =this.tablaBeneficiarios.getSelectionModel().getSelectedItem();
+
+        if(b ==null){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Advertencia");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor seleccione a un beneficiario");
+            alert.showAndWait();
+        }else{
+
+            try {
+
+                String name = this.txtNombre.getText();
+                String number = this.txtNumero.getText();
+                String direccion = this.txtDireccion.getText();
+                String clavaUnica = this.txtCurp.getText();
+                String correo = null;
+
+                Beneficiario beneficiary = new Beneficiario(name, number, direccion, clavaUnica, correo);
+
+                if (!this.beneficiarios.contains(beneficiary)) {
+
+                    b.setNombre(beneficiary.getNombre());
+                    b.setNumeroTelefono(beneficiary.getNumeroTelefono());
+                    b.setDireccion(beneficiary.getDireccion());
+                    b.setCurp(beneficiary.getCurp());
+
+                    this.tablaBeneficiarios.refresh();
+
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Modificado");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Beneficiario modificado");
+                    alert.showAndWait();
+
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("El beneficiario existe");
+                    alert.showAndWait();
+                }
+
+            }catch (NumberFormatException e){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Formato incorrecto");
+                alert.showAndWait();
+            }
+        }
     }
 
 
     @FXML
-    void onClickBeneficiario(MouseEvent event) {
-    }
+    void onClickEliminarBeneficiario(MouseEvent event) {
+        Beneficiario b =this.tablaBeneficiarios.getSelectionModel().getSelectedItem();
 
+        if(b == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Selecciona a un beneficiario en la tabla");
+            alert.showAndWait();
+        }else {
+            this.beneficiarios.remove(b);
+            this.tablaBeneficiarios.refresh();
+        }
+    }
 
     @FXML
     void onClickEliminar(MouseEvent event) {
@@ -89,9 +219,10 @@ public class Beneficiarios implements Initializable {
     }
 
     @FXML
-    void onClickEliminarBeneficiario(MouseEvent event) {
+    void onClickBeneficiario(MouseEvent event) {
 
     }
+
 
     @FXML
     void onClickEmpleado(MouseEvent event) {
@@ -104,19 +235,8 @@ public class Beneficiarios implements Initializable {
     }
 
     @FXML
-    void onClickModificarDatos(MouseEvent event) {
-
-    }
-
-    @FXML
     void onClickProveedor(MouseEvent event) {
 
     }
 
-    public void OnclickAnadirBeneficiario(MouseEvent mouseEvent) {
-        App.newStage("AgregarBeneficiario","Agrega los datos");
-    }
 }
-
-
-

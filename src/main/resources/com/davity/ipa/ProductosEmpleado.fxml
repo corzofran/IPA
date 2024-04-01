@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,19 +12,19 @@
 
 <AnchorPane prefHeight="674.0" prefWidth="1168.0" style="-fx-background-color: #FF6D6D;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.davity.ipa.Controllers.ProductosEmpleado">
    <children>
-      <Text fill="WHITE" layoutX="97.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agregar nuevo producto">
+      <Text fill="WHITE" layoutX="47.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agregar nuevo producto">
          <font>
             <Font name="System Bold" size="37.0" />
          </font></Text>
-      <TextField fx:id="nombre" alignment="CENTER" layoutX="100.0" layoutY="287.0" prefHeight="49.0" prefWidth="417.0" promptText="Nombre del producto" style="-fx-background-color: white;">
+      <TextField fx:id="nombre" alignment="CENTER" layoutX="50.0" layoutY="287.0" prefHeight="49.0" prefWidth="417.0" promptText="Nombre del producto" style="-fx-background-color: white;">
          <font>
             <Font name="Arial Black" size="24.0" />
          </font></TextField>
-      <TextField fx:id="cantidad" alignment="CENTER" layoutX="100.0" layoutY="357.0" prefHeight="49.0" prefWidth="417.0" promptText="Cantidad del producto" style="-fx-background-color: white;">
+      <TextField fx:id="cantidad" alignment="CENTER" layoutX="50.0" layoutY="357.0" prefHeight="49.0" prefWidth="417.0" promptText="Cantidad del producto" style="-fx-background-color: white;">
          <font>
             <Font name="Arial Black" size="24.0" />
          </font></TextField>
-      <TextField fx:id="clasificacion" alignment="CENTER" layoutX="100.0" layoutY="424.0" prefHeight="49.0" prefWidth="417.0" promptText="Clasificacion" style="-fx-background-color: white;">
+      <TextField fx:id="clasificacion" alignment="CENTER" layoutX="50.0" layoutY="424.0" prefHeight="49.0" prefWidth="417.0" promptText="Clasificacion" style="-fx-background-color: white;">
          <font>
             <Font name="Arial Black" size="24.0" />
          </font></TextField>
@@ -52,12 +54,34 @@
       </Pane>
       <ImageView fx:id="cancelar" fitHeight="69.0" fitWidth="209.0" layoutX="20.0" layoutY="591.0" onMouseClicked="#onClickCancelar" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Imagenes/ButtonCancelar.png" />
+            <Image url="@../../../Imagenes/ButtonRegresar.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="guardar" fitHeight="86.0" fitWidth="214.0" layoutX="956.0" layoutY="593.0" onMouseClicked="#onClickguardar" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="guardar" fitHeight="86.0" fitWidth="214.0" layoutX="956.0" layoutY="600.0" onMouseClicked="#onClickguardar" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Imagenes/ButtonGuardar.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tablaProductos" layoutX="510.0" layoutY="179.0" onMouseClicked="#onClickSeleccionarTabla" prefHeight="406.0" prefWidth="655.0">
+        <columns>
+          <TableColumn fx:id="columnaNombre" prefWidth="252.800048828125" text="Nombre del producto" />
+          <TableColumn fx:id="columnaCantidad" prefWidth="123.199951171875" text="Cantidad" />
+            <TableColumn fx:id="columnaClasificacion" prefWidth="247.20013427734375" text="Clasificación" />
+        </columns>
+      </TableView>
+      <ImageView fx:id="modificar" fitHeight="86.0" fitWidth="214.0" layoutX="734.0" layoutY="605.0" onMouseClicked="#onClickmodificar" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/ButtonModificarProducto.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="eliminarProducto" fitHeight="86.0" fitWidth="214.0" layoutX="505.0" layoutY="600.0" onMouseClicked="#onClickEliminar" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/ButtonEliminarProducto.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="212.0" fitWidth="214.0" layoutX="253.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/cajaAbierta.png" />
          </image>
       </ImageView>
    </children>

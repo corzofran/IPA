@@ -74,7 +74,7 @@ public class HomeAdministrador {
 
     @FXML
     void onClickEmpleado(MouseEvent event) {
-
+        App.newStage("Empleados","Tabla de empleados");
     }
 
     @FXML
@@ -84,7 +84,7 @@ public class HomeAdministrador {
 
     @FXML
     void onClickProveedor(MouseEvent event) {
-
+        App.newStage("Proveedores","Proveedores");
     }
 
     @FXML
@@ -94,7 +94,7 @@ public class HomeAdministrador {
 
     @FXML
     void initialize() {
-        Empleado emple = new Empleado("david","1234");
+        Empleado emple = new Empleado("david","1234","","","","");
         usuario.setText(emple.getId());
     }
 

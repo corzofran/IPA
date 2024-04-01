@@ -7,7 +7,7 @@ public class Producto {
     private String nombre;
     private int cantidad;
     private String clasificacion;
-    private int positionArray;
+    private int positionElimined;
 
    private static ArrayList<String> productname = new ArrayList<>();
     private static ArrayList<Integer> productquantity = new ArrayList<>();
@@ -15,6 +15,12 @@ public class Producto {
 
     public Producto() {
 
+    }
+
+    public Producto(String nombre, int cantidad, String clasificacion) {
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.clasificacion = clasificacion;
     }
 
     public boolean addNombre(String nombre){
@@ -44,7 +50,39 @@ public class Producto {
         return productclasification;
     }
 
-    public int getPositionArray() {
-        return positionArray;
+
+    public int getPositionElimined() {
+        return positionElimined;
+    }
+
+    public void setPositionElimined(int positionElimined) {
+        this.positionElimined = positionElimined;
+    }
+
+    ////////////////////////////////////
+
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public String getClasificacion() {
+        return clasificacion;
+    }
+
+    public void setClasificacion(String clasificacion) {
+        this.clasificacion = clasificacion;
     }
 }

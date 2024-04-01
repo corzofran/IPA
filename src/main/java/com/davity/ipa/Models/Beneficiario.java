@@ -1,16 +1,22 @@
 package com.davity.ipa.Models;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 public class Beneficiario extends Persona {
 
-private String curp;
-    public Beneficiario(String nombre, int numeroTelefono, String direccion, String correo, String curp) {
-        super(nombre, numeroTelefono, direccion, correo);
-        this.curp=curp;
+    private String curp;
+
+
+    public String getCurp() {
+        return curp;
     }
 
+    public void setCurp(String curp) {
+        this.curp = curp;
+    }
 
+    public Beneficiario(String nombre, String numeroTelefono, String direccion, String curp, String correo) {
+        super(nombre, numeroTelefono, direccion, correo);
+        this.curp= curp;
+
+
+    }
 }

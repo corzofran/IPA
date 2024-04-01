@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import com.davity.ipa.App;
 import com.davity.ipa.Models.Administrador;
 import com.davity.ipa.Models.Empleado;
+import com.davity.ipa.Models.Persona;
 import com.davity.ipa.Models.Usuario;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -48,7 +49,7 @@ public class InicioSesion {
     }
 
     //EMPLEADO
-    Empleado emple = new Empleado("david","1234");
+    Empleado emple = new Empleado("david","1234","","","","");
     String idEmpleado = emple.getId();
     String passwordEmpleado = emple.getPassword();
 
@@ -61,10 +62,12 @@ public class InicioSesion {
     void OnclickIngresar(MouseEvent event) {
         if (TextFieldId.getText().equals(idEmpleado) && PasswordFieldPassword.getText().equals(passwordEmpleado)) {
             System.out.println("INGRESADO");
+            Textincorrectos.setText("");
             App.newStage("HomeEmpleado", "Bienvenido Empleado");
 
         } else if (TextFieldId.getText().equals(idAdmin) && PasswordFieldPassword.getText().equals(passwordAdmin)) {
             System.out.println("INGRESADO");
+            Textincorrectos.setText("");
             App.newStage("HomeAdministrador", "Bienvenido Administrador");
 
         } else {

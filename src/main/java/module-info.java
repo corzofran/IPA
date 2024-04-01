@@ -8,6 +8,7 @@ module com.davity.ipa {
     requires java.sql;
 
     opens com.davity.ipa to javafx.fxml;
+    opens com.davity.ipa.Models;
     exports com.davity.ipa;
     exports com.davity.ipa.Controllers;
     opens com.davity.ipa.Controllers to javafx.fxml;

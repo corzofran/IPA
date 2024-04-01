@@ -89,7 +89,6 @@ public class ProductoEncontrado {
         ArrayList<String> clasification = Producto.getProductclasification();
 
        Producto product = new Producto();
-       int position = product.getPositionArray();
 
 
         System.out.println(getArrayPosicion());

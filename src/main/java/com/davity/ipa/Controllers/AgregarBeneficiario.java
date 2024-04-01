@@ -1,11 +1,21 @@
 package com.davity.ipa.Controllers;
 
+import com.davity.ipa.Models.Beneficiario;
+import com.davity.ipa.Models.Persona;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
-public class AgregarBeneficiario {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class AgregarBeneficiario implements Initializable {
 
     @FXML
     private ImageView btnGuardar;
@@ -25,8 +35,14 @@ public class AgregarBeneficiario {
     @FXML
     private TextField txtNumero;
 
+
+    private ObservableList<Persona> Beneficiarios;
+
+
+
     @FXML
-    void guardar(MouseEvent event) {
+    private void guardar(MouseEvent event) {
+
 
     }
 
@@ -35,4 +51,8 @@ public class AgregarBeneficiario {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }
