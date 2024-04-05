@@ -1,16 +1,20 @@
 package com.davity.ipa.Controllers;
+
+import com.davity.ipa.Models.Producto;
+import com.davity.ipa.Models.Objetos;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.InputMethodEvent;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import org.controlsfx.validation.Severity;
-import org.controlsfx.validation.ValidationResult;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
 
@@ -18,105 +22,71 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import com.davity.ipa.Models.Producto;
-import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-
-public class ProductosEmpleado {
-
+public class ProductosAdministrador implements Initializable {
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
+    private ImageView beneficiario;
 
     @FXML
     private ImageView cancelar;
 
     @FXML
-    private TextField cantidad;
-
-    @FXML
-    private TextField clasificacion;
-
-    @FXML
-    private ImageView eliminar;
+    private ImageView empleado;
 
     @FXML
     private ImageView inicio;
 
     @FXML
+    private ImageView proveedor;
+
+    @FXML
     private ImageView inventario;
 
     @FXML
-    private TextField nombre;
+    private ImageView btnAnadirProducto;
 
     @FXML
-    private TableColumn<Producto, ?> columnaClasificacion;
+    private ImageView btneliminarProducto;
 
     @FXML
-    private TableColumn<Producto, ?> columnaCantidad;
+    private ImageView btnmodificarProducto;
 
     @FXML
-    private TableColumn<Producto, ?> columnaNombre;
+    private TableView<Objetos> tablaProductos;
 
     @FXML
-    private TableView<Producto> tablaProductos;
+    private TableColumn<Objetos, ?> columnaCantidad;
 
     @FXML
-    private ImageView eliminarProducto;
+    private TableColumn<Objetos, ?> columnaClasificacion;
 
     @FXML
-    private ImageView modificar;
+    private TableColumn<Objetos, ?> columnaNombre;
 
     @FXML
-    private ImageView guardar;
-
-    private ObservableList<Producto> productos = FXCollections.observableArrayList();
+    private TextField txtNombre;
 
     @FXML
-    void onClickCancelar(MouseEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
-    }
+    private TextField txtcantidad;
 
     @FXML
-    void onClickInicio(MouseEvent event) {
+    private TextField txtclasificacion;
 
-    }
+    private ObservableList<Objetos> Productos = FXCollections.observableArrayList();
 
-    @FXML
-    void onClickInventario(MouseEvent event) {
-
-    }
-    Producto producto = new Producto();
+    Objetos products = new Objetos();
     private ValidationSupport validationSupport;
 
-    @FXML
-    void initialize() {
-        productos = FXCollections.observableArrayList();
-        tablaProductos.setItems(productos);
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Productos = FXCollections.observableArrayList();
+        tablaProductos.setItems(Productos);
 
         columnaNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         columnaCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
         columnaClasificacion.setCellValueFactory(new PropertyValueFactory<>("clasificacion"));
 
-
-        validationSupport = new ValidationSupport();
-
-        Validator<String> nombreValidator = Validator.createEmptyValidator("El nombre del producto es requerido");
-        Validator<Integer> cantidadValidator = Validator.createEmptyValidator("La cantidad debe ser un número entero");
-        Validator<String> clasificacionValidator = Validator.createEmptyValidator("La clasificación es requerida");
-
-        validationSupport.registerValidator(nombre, true, nombreValidator);
-        validationSupport.registerValidator(cantidad, true, cantidadValidator);
-        validationSupport.registerValidator(clasificacion, true, clasificacionValidator);
-
-        cantidad.textProperty().addListener((observable, oldValue, newValue) -> {
+        txtcantidad.textProperty().addListener((observable, oldValue, newValue) -> {
 
             if (!newValue.matches("\\d*")|| "0".equals(newValue)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -124,44 +94,49 @@ public class ProductosEmpleado {
                 alert.setHeaderText(null);
                 alert.setContentText("Solo puedes ingresar números en la cantidad");
                 alert.showAndWait();
-
-                cantidad.setText(oldValue);
+                txtcantidad.setText(oldValue);
             }
         });
+
+        validationSupport = new ValidationSupport();
+        Validator<String> nombreValidator = Validator.createEmptyValidator("El nombre del producto es requerido");
+        Validator<Integer> cantidadValidator = Validator.createEmptyValidator("La cantidad debe ser un número entero");
+        Validator<String> clasificacionValidator = Validator.createEmptyValidator("La clasificación es requerida");
+
+        validationSupport.registerValidator(txtNombre, true, nombreValidator);
+        validationSupport.registerValidator(txtcantidad, true, cantidadValidator);
+        validationSupport.registerValidator(txtclasificacion, true, clasificacionValidator);
     }
-
     @FXML
-    void onClickguardar(MouseEvent event) {
-        //declarar los valores de textfield en variables
-        String product = nombre.getText();
-        String quanty = cantidad.getText();
-        String clasification = clasificacion.getText();
+    void onClickAnadirProducto(MouseEvent event) {
+        String product = this.txtNombre.getText();
+        String quanty = this.txtcantidad.getText();
+        String clasification = this.txtclasificacion.getText();
+        boolean vacio = false;
+        Objetos p = new Objetos(product, quanty, clasification);
 
-        Producto p = new Producto(product,quanty, clasification);
- //////////////////////////////
-        productos.add(p);
-/////////////////////////////
+        Productos.add(p);
 
         if (validationSupport.isInvalid()) {
             tablaProductos.getItems().clear();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error de validación");
             alert.setHeaderText(null);
-            alert.setContentText("Por favor, complete todos los campos correctamente.");
+            alert.setContentText("Por favor, complete todos los campos de texto.");
             alert.showAndWait();
         } else {
-            producto.addNombre(nombre.getText());
-            producto.addCantidad(cantidad.getText());
-            producto.addClasificacion(clasificacion.getText());
+            products.addNombres(txtNombre.getText());
+            products.addCantidades(txtcantidad.getText());
+            products.addClasificaciones(txtclasificacion.getText());
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("AGREGADO");
             alert.setHeaderText(null);
             alert.setContentText("Producto agregado ✔");
             alert.showAndWait();
-            nombre.clear();
-            cantidad.clear();
-            clasificacion.clear();
+            txtNombre.clear();
+            txtcantidad.clear();
+            txtclasificacion.clear();
         }
     }
 
@@ -169,14 +144,14 @@ public class ProductosEmpleado {
     void onClickSeleccionarTabla(MouseEvent event) {
         Producto p = this.tablaProductos.getSelectionModel().getSelectedItem();
         if(p !=null){
-            this.nombre.setText(p.getNombre());
-            this.cantidad.setText(String.valueOf(p.getCantidad()));
-            this.clasificacion.setText(p.getClasificacion());
+            this.txtNombre.setText(p.getNombre());
+            this.txtcantidad.setText(String.valueOf(p.getCantidad()));
+            this.txtclasificacion.setText(p.getClasificacion());
         }
-
     }
 
-    public void onClickmodificar(MouseEvent mouseEvent) {
+    @FXML
+    void onClickmodificarProducto(MouseEvent event) {
         Producto p = this.tablaProductos.getSelectionModel().getSelectedItem();
 
         if(p ==null){
@@ -187,13 +162,13 @@ public class ProductosEmpleado {
             alert.showAndWait();
         }else {
             try{
-                String product = this.nombre.getText();
-                String quanty = this.cantidad.getText();
-                String clasification = this.clasificacion.getText();
+                String product = this.txtNombre.getText();
+                String quanty = this.txtcantidad.getText();
+                String clasification = this.txtclasificacion.getText();
 
                 Producto pro = new Producto(product, quanty, clasification);
 
-                if(!this.productos.contains(pro)){
+                if(!this.Productos.contains(pro)){
                     p.setNombre(pro.getNombre());
                     p.setCantidad(pro.getCantidad());
                     p.setClasificacion(pro.getClasificacion());
@@ -206,11 +181,11 @@ public class ProductosEmpleado {
                     alert.showAndWait();
 
                     //DECLARANDO OTRA VEZ LOS VALORES QUE HAY EN LOS TEXTFIELD EN VARIABLES
-                    String ProductoElement = nombre.getText();
-                    int QuantyElement = Integer.parseInt(cantidad.getText());
-                    String ClasificationElement = clasificacion.getText();
+                    String ProductoElement = txtNombre.getText();
+                    int QuantyElement = Integer.parseInt(txtcantidad.getText());
+                    String ClasificationElement = txtclasificacion.getText();
 
-                    int positionModified = productos.indexOf(p);
+                    int positionModified = Productos.indexOf(p);
 
                     System.out.println("mod: "+positionModified);
                     System.out.println(ProductoElement);
@@ -218,9 +193,9 @@ public class ProductosEmpleado {
                     System.out.println(ClasificationElement);
 
                     //Llamando los arraysList de Producto para modificarlos tambien
-                    ArrayList<String> nameProducto = Producto.getProductname();
-                    ArrayList<Integer> QuantyProducto = Producto.getProductquantity();
-                    ArrayList<String> ClasificationProducto = Producto.getProductclasification();
+                    ArrayList<String> nameProducto = Objetos.getProductnames();
+                    ArrayList<Integer> QuantyProducto = Objetos.getProductquantitys();
+                    ArrayList<String> ClasificationProducto = Objetos.getProductclasifications();
 
                     //MODIFICANDO LOS ELEMENTOS ANTIGUOS DE LOS ARRAYSLIST
                     nameProducto.set(positionModified, ProductoElement);
@@ -248,24 +223,24 @@ public class ProductosEmpleado {
     }
 
     @FXML
-    void onClickEliminar(MouseEvent event) {
+    void onClickEliminarProducto(MouseEvent event) {
         Producto p = this.tablaProductos.getSelectionModel().getSelectedItem();
 
-        if(p ==null){
+        if(p == null){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Advertencia");
             alert.setHeaderText(null);
             alert.setContentText("Por favor seleccione a un beneficiario");
             alert.showAndWait();
         }else {
-            int positionElimined = productos.indexOf(p);
+            int positionElimined = Productos.indexOf(p);
             System.out.println("P: "+positionElimined);
 
             //ELIMINA TAMBIEN EL ELEMENTO DEL ARRAYLIST PARA QUE TAMPOCO EXISTA CUANDO SE HAGA LA BUSQUEDA
-            ArrayList<String> nameproduct = Producto.getProductname();
+            ArrayList<String> nameproduct = Objetos.getProductname();
             nameproduct.remove(positionElimined);
 
-            this.productos.remove(p);
+            this.Productos.remove(p);
             this.tablaProductos.refresh();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Aviso");
@@ -274,6 +249,32 @@ public class ProductosEmpleado {
             alert.showAndWait();
         }
     }
+    @FXML
+    void onClickBeneficiario(MouseEvent event) {
+
+    }
+
+    @FXML
+    void onClickCancelar(MouseEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    void onClickEmpleado(MouseEvent event) {
+
+    }
+
+    @FXML
+    void onClickInicio(MouseEvent event) {
+
+    }
+
+    @FXML
+    void onClickProveedor(MouseEvent event) {
+
+    }
 
 }
+
 

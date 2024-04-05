@@ -48,17 +48,7 @@
             <Image url="@../../../Imagenes/logo1.png" />
          </image>
       </ImageView>
-      <Text fill="WHITE" layoutX="22.0" layoutY="642.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido:">
-         <font>
-            <Font name="System Bold" size="52.0" />
-         </font>
-      </Text>
-      <Text fx:id="usuario" fill="WHITE" layoutX="330.0" layoutY="649.0" strokeType="OUTSIDE" strokeWidth="0.0">
-         <font>
-            <Font name="System Bold" size="52.0" />
-         </font>
-      </Text>
-      <ImageView fx:id="volver" fitHeight="69.0" fitWidth="182.0" layoutX="963.0" layoutY="593.0" onMouseClicked="#onClickVolver" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="volver" fitHeight="69.0" fitWidth="182.0" layoutX="975.0" layoutY="595.0" onMouseClicked="#onClickVolver" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Imagenes/ButtonVolver.png" />
          </image>

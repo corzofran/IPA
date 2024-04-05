@@ -63,11 +63,15 @@ public class InicioSesion {
         if (TextFieldId.getText().equals(idEmpleado) && PasswordFieldPassword.getText().equals(passwordEmpleado)) {
             System.out.println("INGRESADO");
             Textincorrectos.setText("");
+            TextFieldId.clear();
+            PasswordFieldPassword.clear();
             App.newStage("HomeEmpleado", "Bienvenido Empleado");
 
         } else if (TextFieldId.getText().equals(idAdmin) && PasswordFieldPassword.getText().equals(passwordAdmin)) {
             System.out.println("INGRESADO");
             Textincorrectos.setText("");
+            TextFieldId.clear();
+            PasswordFieldPassword.clear();
             App.newStage("HomeAdministrador", "Bienvenido Administrador");
 
         } else {

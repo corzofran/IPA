@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Producto {
 
-    private String nombre;
-    private int cantidad;
-    private String clasificacion;
-    private int positionElimined;
+    protected String nombre;
+    protected String cantidad;
+    protected String clasificacion;
+    protected int positionElimined;
 
    private static ArrayList<String> productname = new ArrayList<>();
     private static ArrayList<Integer> productquantity = new ArrayList<>();
@@ -17,7 +17,7 @@ public class Producto {
 
     }
 
-    public Producto(String nombre, int cantidad, String clasificacion) {
+    public Producto(String nombre, String cantidad, String clasificacion) {
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.clasificacion = clasificacion;
@@ -28,9 +28,9 @@ public class Producto {
         return productname.add(nombre);
     }
 
-    public boolean addCantidad(int cantidad){
+    public boolean addCantidad(String cantidad){
         this.cantidad = cantidad;
-        return productquantity.add(cantidad);
+        return productquantity.add(Integer.valueOf(cantidad));
     }
 
     public boolean addClasificacion(String clasificacion){
@@ -70,11 +70,11 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public int getCantidad() {
+    public String getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
+    public void setCantidad(String cantidad) {
         this.cantidad = cantidad;
     }
 

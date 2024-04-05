@@ -1,52 +1,43 @@
 package com.davity.ipa.Controllers;
 
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-
-import com.davity.ipa.Models.Producto;
+import com.davity.ipa.Models.Objetos;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class ProductoEncontrado {
+import java.util.ArrayList;
+
+public class ProductoEncontradoAdmin {
 
     @FXML
-    private ResourceBundle resources;
+    private ImageView btnBeneficiario;
 
     @FXML
-    private URL location;
+    private ImageView btnEmpleado;
 
     @FXML
-    private ImageView agregar;
+    private ImageView btnProveedor;
 
     @FXML
-    private ImageView cerrarSesion;
-
-    @FXML
-    private Label producto;
+    private ImageView btninicio;
 
     @FXML
     private Label cantidad;
 
     @FXML
+    private ImageView cerrarSesion;
+
+    @FXML
     private Label clasificacion;
-
-    @FXML
-    private ImageView eliminar;
-
-    @FXML
-    private ImageView inicio;
 
     @FXML
     private ImageView inventario;
 
     @FXML
-    private Text usuario;
+    private Label producto;
 
     public static int arrayPosicion;
 
@@ -55,11 +46,11 @@ public class ProductoEncontrado {
     }
 
     public static void setArrayPosicion(int arrayPosicion) {
-        ProductoEncontrado.arrayPosicion = arrayPosicion;
+        ProductoEncontradoAdmin.arrayPosicion = arrayPosicion;
     }
 
     @FXML
-    void onClickAgregar(MouseEvent event) {
+    void onClickBeneficiario(MouseEvent event) {
 
     }
 
@@ -70,7 +61,7 @@ public class ProductoEncontrado {
     }
 
     @FXML
-    void onClickEliminar(MouseEvent event) {
+    void onClickEmpleado(MouseEvent event) {
 
     }
 
@@ -80,17 +71,17 @@ public class ProductoEncontrado {
     }
 
     @FXML
-    void onClickInventario(MouseEvent event) {
+    void onClickProveedor(MouseEvent event) {
 
     }
 
     @FXML
     void initialize() {
-        ArrayList<String> namesproducts = Producto.getProductname();
-        ArrayList<Integer> quantityproduct = Producto.getProductquantity();
-        ArrayList<String> clasification = Producto.getProductclasification();
+        ArrayList<String> namesproducts = Objetos.getProductnames();
+        ArrayList<Integer> quantityproduct = Objetos.getProductquantitys();
+        ArrayList<String> clasification = Objetos.getProductclasifications();
 
-       Producto product = new Producto();
+        Objetos product = new Objetos();
 
 
         System.out.println(getArrayPosicion());

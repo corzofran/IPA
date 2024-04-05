@@ -68,7 +68,7 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Text>
-            <TextField fx:id="txtCurp" layoutX="22.0" layoutY="288.0" prefHeight="33.0" prefWidth="251.0" />
+            <TextField fx:id="txtCurp" layoutX="22.0" layoutY="288.0" onKeyTyped="#onKeyCurp" prefHeight="33.0" prefWidth="251.0" />
             <Text layoutX="22.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Curp">
                <font>
                   <Font name="System Bold" size="22.0" />

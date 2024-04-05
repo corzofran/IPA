@@ -57,7 +57,7 @@
             <Image url="@../../../Imagenes/ButtonRegresar.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="guardar" fitHeight="86.0" fitWidth="214.0" layoutX="956.0" layoutY="600.0" onMouseClicked="#onClickguardar" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="guardar" fitHeight="86.0" fitWidth="214.0" layoutX="509.0" layoutY="599.0" onMouseClicked="#onClickguardar" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Imagenes/ButtonGuardar.png" />
          </image>
@@ -69,12 +69,12 @@
             <TableColumn fx:id="columnaClasificacion" prefWidth="247.20013427734375" text="Clasificación" />
         </columns>
       </TableView>
-      <ImageView fx:id="modificar" fitHeight="86.0" fitWidth="214.0" layoutX="734.0" layoutY="605.0" onMouseClicked="#onClickmodificar" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="modificar" fitHeight="86.0" fitWidth="214.0" layoutX="730.0" layoutY="605.0" onMouseClicked="#onClickmodificar" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Imagenes/ButtonModificarProducto.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="eliminarProducto" fitHeight="86.0" fitWidth="214.0" layoutX="505.0" layoutY="600.0" onMouseClicked="#onClickEliminar" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="eliminarProducto" fitHeight="86.0" fitWidth="214.0" layoutX="952.0" layoutY="600.0" onMouseClicked="#onClickEliminar" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Imagenes/ButtonEliminarProducto.png" />
          </image>

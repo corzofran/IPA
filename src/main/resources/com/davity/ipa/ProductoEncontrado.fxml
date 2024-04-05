@@ -10,7 +10,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="674.0" prefWidth="1168.0" style="-fx-background-color: #FF6D6D;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.davity.ipa.Controllers.ProductoEncontrado">
    <children>
       <Pane layoutY="-2.0" prefHeight="147.0" prefWidth="1183.0" style="-fx-background-color: #FF5050;">
@@ -39,16 +38,11 @@
             </DropShadow>
          </effect>
       </Label>
-      <ImageView fx:id="cerrarSesion" fitHeight="82.0" fitWidth="243.0" layoutX="988.0" layoutY="594.0" onMouseClicked="#onClickCerrarSesion" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cerrarSesion" fitHeight="69.0" fitWidth="196.0" layoutX="988.0" layoutY="594.0" onMouseClicked="#onClickCerrarSesion" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Imagenes/ButtonCerrarSesion.png" />
+            <Image url="@../../../Imagenes/ButtonVolver.png" />
          </image>
       </ImageView>
-      <Text fill="WHITE" layoutX="23.0" layoutY="643.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido:">
-         <font>
-            <Font name="System Bold" size="52.0" />
-         </font>
-      </Text>
       <Text fx:id="usuario" fill="WHITE" layoutX="331.0" layoutY="650.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font name="System Bold" size="52.0" />

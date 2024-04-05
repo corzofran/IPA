@@ -104,6 +104,7 @@ public class HomeEmpleado {
     @FXML
     void initialize() {
         usuario.setText(emple.getId());
+        buscador.clear();
     }
 
 }

@@ -25,7 +25,7 @@ public class App extends Application {
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
-        stage.setResizable(false);
+        stage.setResizable(false); //QUITAR LOS ESTIRAMIENTOS
     }
 
     public static void newStage(String fxml, String title) {
@@ -57,8 +57,6 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-
-
         launch();
     }
 }

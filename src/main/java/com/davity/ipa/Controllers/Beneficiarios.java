@@ -1,5 +1,6 @@
 package com.davity.ipa.Controllers;
 
+import com.davity.ipa.App;
 import com.davity.ipa.Models.Beneficiario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,7 +12,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import org.controlsfx.validation.ValidationSupport;
+import org.controlsfx.validation.Validator;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -71,6 +75,8 @@ public class Beneficiarios implements Initializable {
 
     private ObservableList<Beneficiario> beneficiarios;
 
+    private ValidationSupport validacion;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         beneficiarios = FXCollections.observableArrayList();
@@ -83,6 +89,18 @@ public class Beneficiarios implements Initializable {
         curp.setCellValueFactory(new PropertyValueFactory<>("curp"));
         tablaBeneficiarios.getColumns().addAll(nombre,telefono,domicilio,curp);
 
+        txtNumero.textProperty().addListener((observable, oldValue, newValue) -> {
+
+            if (!newValue.matches("\\d*")|| "0".equals(newValue)) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Solo puedes ingresar números");
+                alert.showAndWait();
+
+                txtNumero.setText(oldValue);
+            }
+        });
     }
 
     @FXML
@@ -93,39 +111,51 @@ public class Beneficiarios implements Initializable {
             String direccion = this.txtDireccion.getText();
             String clavaUnica = this.txtCurp.getText();
             String correo = null;
+            boolean vacio =false;
 
             Beneficiario beneficiary = new Beneficiario(name, number, direccion, clavaUnica, correo);
 
 
-            boolean existe = false;
-            for (Beneficiario p : beneficiarios) {
-                if (p.getCurp().equals(beneficiary.getCurp()) || p.getNombre().equals(beneficiary.getNombre())) {
-                    existe = true;
-                    break;
-                }
-            }
-            if (existe) {
-                // Mostrar una alerta indicando que la persona ya existe
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Advertencia");
-                alert.setHeaderText(null);
-                alert.setContentText("Este beneficiario ya existe");
-                alert.showAndWait();
-            } else {
-                // Agregar la persona a la lista y mostrar una alerta indicando que la persona fue agregada
-                beneficiarios.add(beneficiary);
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Información");
-                alert.setHeaderText(null);
-                alert.setContentText("Beneficiario agregado");
-                alert.showAndWait();
 
-                // Limpiar los campos de texto después de agregar la persona
-                txtCurp.clear();
-                txtDireccion.clear();
-                txtNombre.clear();
-                txtNumero.clear();
-            }
+
+                boolean existe = false;
+                for (Beneficiario p : beneficiarios) {
+                    if (p.getCurp().equals(beneficiary.getCurp()) || p.getNombre().equals(beneficiary.getNombre())) {
+                        existe = true;
+                        break;
+                    }
+                }
+
+        if(name.isEmpty() || number.isEmpty() || direccion.isEmpty() || clavaUnica.isEmpty()){
+            vacio = true;
+        }
+
+        if (vacio) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Advertencia");
+            alert.setHeaderText(null);
+            alert.setContentText("No puedes dejar campos vacíos");
+            alert.showAndWait();
+        } else if (existe) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Advertencia");
+            alert.setHeaderText(null);
+            alert.setContentText("Este beneficiario ya existe");
+            alert.showAndWait();
+        } else {
+            beneficiarios.add(beneficiary);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Información");
+            alert.setHeaderText(null);
+            alert.setContentText("Beneficiario agregado");
+            alert.showAndWait();
+
+            txtCurp.clear();
+            txtDireccion.clear();
+            txtNombre.clear();
+            txtNumero.clear();
+        }
+
     }
 
     @FXML
@@ -177,6 +207,10 @@ public class Beneficiarios implements Initializable {
                     alert.setHeaderText(null);
                     alert.setContentText("Beneficiario modificado");
                     alert.showAndWait();
+                    txtCurp.clear();
+                    txtDireccion.clear();
+                    txtNombre.clear();
+                    txtNumero.clear();
 
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -210,6 +244,18 @@ public class Beneficiarios implements Initializable {
         }else {
             this.beneficiarios.remove(b);
             this.tablaBeneficiarios.refresh();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Advertencia");
+            alert.setHeaderText(null);
+            alert.setContentText("Beneficiario Eliminado");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    void onKeyCurp(KeyEvent event) {
+        if(txtCurp.getText().length() >= 18){
+            event.consume();
         }
     }
 
@@ -218,15 +264,16 @@ public class Beneficiarios implements Initializable {
 
     }
 
+
     @FXML
     void onClickBeneficiario(MouseEvent event) {
-
+        App.newStage("Beneficiario","Tabla de beneficiarios");
     }
 
 
     @FXML
     void onClickEmpleado(MouseEvent event) {
-
+        App.newStage("Empleados","Tabla de empleados");
     }
 
     @FXML
@@ -236,7 +283,7 @@ public class Beneficiarios implements Initializable {
 
     @FXML
     void onClickProveedor(MouseEvent event) {
-
+        App.newStage("Proveedores","Tabla de proveedores");
     }
 
 }

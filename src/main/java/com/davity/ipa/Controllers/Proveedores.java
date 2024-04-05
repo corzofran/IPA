@@ -1,5 +1,6 @@
 package com.davity.ipa.Controllers;
 
+import com.davity.ipa.App;
 import com.davity.ipa.Models.Proveedor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -81,6 +82,19 @@ public class Proveedores implements Initializable {
         domicilio.setCellValueFactory(new PropertyValueFactory<>("direccion"));
         correo.setCellValueFactory(new PropertyValueFactory<>("correo"));
         tablaProveedores.getColumns().addAll(nombre,telefono,domicilio,correo);
+
+        txtNumero.textProperty().addListener((observable, oldValue, newValue) -> {
+
+            if (!newValue.matches("\\d*")|| "0".equals(newValue)) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Solo puedes ingresar números");
+                alert.showAndWait();
+
+                txtNumero.setText(oldValue);
+            }
+        });
     }
 
     @FXML
@@ -91,6 +105,11 @@ public class Proveedores implements Initializable {
         String email = this.txtCorreo.getText();
 
         Proveedor p = new Proveedor(name,number,direction,email);
+        boolean vacio = true;
+
+        if(name.isEmpty() || number.isEmpty() || direction.isEmpty() || email.isEmpty()){
+            vacio = false;
+        }
 
         Boolean existe = false;
         for(Proveedor prover : provedores){
@@ -106,20 +125,37 @@ public class Proveedores implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("El proveedor ya existe");
             alert.showAndWait();
-        } else{
-            provedores.add(p);
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Agregado");
-            alert.setHeaderText(null);
-            alert.setContentText("Proveedor agregado exitosamente ✔");
-            alert.showAndWait();
+        } else {
 
-            txtNombre.clear();
-            txtCorreo.clear();
-            txtDireccion.clear();
-            txtNumero.clear();
+            if(!vacio){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("CORREO INVALIDO");
+                alert.setHeaderText(null);
+                alert.setContentText("No puedes dejar campos vacios");
+                alert.showAndWait();
+            }else {
+
+                if (!txtCorreo.getText().contains("@") || !txtCorreo.getText().contains(".")) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("CORREO INVALIDO");
+                    alert.setHeaderText(null);
+                    alert.setContentText("El correo es invalido");
+                    alert.showAndWait();
+                } else {
+                    provedores.add(p);
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Agregado");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Proveedor agregado exitosamente ✔");
+                    alert.showAndWait();
+
+                    txtNombre.clear();
+                    txtCorreo.clear();
+                    txtDireccion.clear();
+                    txtNumero.clear();
+                }
+            }
         }
-
     }
 
     @FXML
@@ -199,7 +235,7 @@ public class Proveedores implements Initializable {
             alert.setContentText("Selecciona a un proveedor en la tabla");
             alert.showAndWait();
         }else{
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Error");
             alert.setHeaderText(null);
             alert.setContentText("Proveedor eliminado");
@@ -213,7 +249,7 @@ public class Proveedores implements Initializable {
 
     @FXML
     void onClickBeneficiario(MouseEvent event) {
-
+        App.newStage("Beneficiario","Tabla de beneficiarios");
     }
 
     @FXML
@@ -223,7 +259,7 @@ public class Proveedores implements Initializable {
 
     @FXML
     void onClickEmpleado(MouseEvent event) {
-
+        App.newStage("Empleados","Tabla de empleados");
     }
 
     @FXML
