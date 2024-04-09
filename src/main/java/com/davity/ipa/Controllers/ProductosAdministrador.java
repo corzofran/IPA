@@ -1,5 +1,6 @@
 package com.davity.ipa.Controllers;
 
+import com.davity.ipa.App;
 import com.davity.ipa.Models.Producto;
 import com.davity.ipa.Models.Objetos;
 import javafx.collections.FXCollections;
@@ -128,6 +129,7 @@ public class ProductosAdministrador implements Initializable {
             products.addNombres(txtNombre.getText());
             products.addCantidades(txtcantidad.getText());
             products.addClasificaciones(txtclasificacion.getText());
+            int positionModified = Productos.indexOf(p);
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("AGREGADO");
@@ -137,6 +139,11 @@ public class ProductosAdministrador implements Initializable {
             txtNombre.clear();
             txtcantidad.clear();
             txtclasificacion.clear();
+
+            System.out.println(product);
+            System.out.println(quanty);
+            System.out.println(clasification);
+            System.out.println("pos: "+positionModified);
         }
     }
 
@@ -202,6 +209,9 @@ public class ProductosAdministrador implements Initializable {
                     QuantyProducto.set(positionModified, QuantyElement);
                     ClasificationProducto.set(positionModified, ClasificationElement);
 
+                    // Agregar el nuevo elemento en la misma posición
+
+
                 }else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
@@ -237,7 +247,7 @@ public class ProductosAdministrador implements Initializable {
             System.out.println("P: "+positionElimined);
 
             //ELIMINA TAMBIEN EL ELEMENTO DEL ARRAYLIST PARA QUE TAMPOCO EXISTA CUANDO SE HAGA LA BUSQUEDA
-            ArrayList<String> nameproduct = Objetos.getProductname();
+           ArrayList<String> nameproduct = Objetos.getProductname();
             nameproduct.remove(positionElimined);
 
             this.Productos.remove(p);
@@ -251,7 +261,7 @@ public class ProductosAdministrador implements Initializable {
     }
     @FXML
     void onClickBeneficiario(MouseEvent event) {
-
+        App.newStage("Beneficiario", "Tabla de beneficiarios");
     }
 
     @FXML
@@ -262,17 +272,17 @@ public class ProductosAdministrador implements Initializable {
 
     @FXML
     void onClickEmpleado(MouseEvent event) {
-
+        App.newStage("Empleados","Tabla de empleados");
     }
 
     @FXML
     void onClickInicio(MouseEvent event) {
-
+        App.newStage("HomeAdministrador","Bienvenido Administrador");
     }
 
     @FXML
     void onClickProveedor(MouseEvent event) {
-
+        App.newStage("Proveedores","Tabla de proveedores");
     }
 
 }

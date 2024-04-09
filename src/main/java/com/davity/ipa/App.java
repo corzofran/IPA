@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -21,11 +22,16 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("InicioSesion.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
+        stage.setTitle("Inventario de Productos Alimenticios (IPA)" +
+                "                                                                                                     Iniciar sesion");
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
         stage.setResizable(false); //QUITAR LOS ESTIRAMIENTOS
+
+        Image image = new Image(getClass().getResourceAsStream("/logo/caja.png"));
+        stage.getIcons().add(image);
+
     }
 
     public static void newStage(String fxml, String title) {

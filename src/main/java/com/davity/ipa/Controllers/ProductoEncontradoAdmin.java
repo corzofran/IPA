@@ -81,8 +81,6 @@ public class ProductoEncontradoAdmin {
         ArrayList<Integer> quantityproduct = Objetos.getProductquantitys();
         ArrayList<String> clasification = Objetos.getProductclasifications();
 
-        Objetos product = new Objetos();
-
 
         System.out.println(getArrayPosicion());
 

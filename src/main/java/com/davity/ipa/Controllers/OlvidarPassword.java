@@ -1,6 +1,7 @@
 package com.davity.ipa.Controllers;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.davity.ipa.App;
@@ -33,14 +34,45 @@ public class OlvidarPassword {
     @FXML
     private Text repetido;
 
+    //francisco
     Usuario usuary = new Usuario("david","1234");
     String id = usuary.getId();
-
+    ArrayList<String> arrayNames = usuary.getRecuperarNames();
+    String usuarioSelect;
+    Usuario u = new Usuario();
+    int notificar;
     @FXML
     void onClickEnviar(MouseEvent event) {
+        /*
         if(nombre.getText().equals(id)){
             App.newStage("PasswordEnviada","Contraseña enviada");
         } else {
+            repetido.setText("No existe este nombre");
+        }
+
+         */
+
+        boolean datosCorrectos = false;
+
+        for (int i = 0; i < arrayNames.size(); i++) {
+            if (nombre.getText().equals(arrayNames.get(i))) {
+                datosCorrectos = true;
+                usuarioSelect=arrayNames.get(i);
+                break;
+            }
+        }
+        if (datosCorrectos) {
+            System.out.println("DATOS CORRECTO EMPLEADO");
+            App.newStage("PasswordEnviada","Contraseña enviada");
+            int notification = Usuario.setNotificacion(notificar+1);
+
+
+            System.out.println(arrayNames);
+            System.out.println(usuarioSelect);
+            System.out.println(notificar);
+
+        } else {
+            System.out.println("DATOS INCORRECTO EMPLEADO");
             repetido.setText("No existe este nombre");
         }
     }
@@ -55,6 +87,5 @@ public class OlvidarPassword {
     void initialize() {
 
     }
-
 }
 

@@ -10,18 +10,20 @@ public class Producto {
     protected int positionElimined;
 
    private static ArrayList<String> productname = new ArrayList<>();
-    private static ArrayList<Integer> productquantity = new ArrayList<>();
-  private static ArrayList<String> productclasification = new ArrayList<>();
+   private static ArrayList<Integer> productquantity = new ArrayList<>();
+   private static ArrayList<String> productclasification = new ArrayList<>();
 
-    public Producto() {
 
-    }
+public Producto(){
+
+}
 
     public Producto(String nombre, String cantidad, String clasificacion) {
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.clasificacion = clasificacion;
     }
+
 
     public boolean addNombre(String nombre){
         this.nombre = nombre;

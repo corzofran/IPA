@@ -5,12 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.InputMethodEvent;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import org.controlsfx.validation.Severity;
-import org.controlsfx.validation.ValidationResult;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
 
@@ -159,9 +154,11 @@ public class ProductosEmpleado {
             alert.setHeaderText(null);
             alert.setContentText("Producto agregado ✔");
             alert.showAndWait();
+            int positionModified = productos.indexOf(p);
             nombre.clear();
             cantidad.clear();
             clasificacion.clear();
+            System.out.println(positionModified);
         }
     }
 

@@ -49,10 +49,6 @@ public class HomeEmpleado {
     @FXML
     private Text usuario;
 
-    @FXML
-    void onClickAgregar(MouseEvent event) {
-        App.newStage("ProductosEmpleado","Agregar Productos");
-    }
 
     @FXML
     void onClickCerrarSesion(MouseEvent event) {
@@ -60,19 +56,10 @@ public class HomeEmpleado {
         stage.close();
     }
 
-    @FXML
-    void onClickEliminar(MouseEvent event) {
-
-    }
-
-    @FXML
-    void onClickInicio(MouseEvent event) {
-
-    }
 
     @FXML
     void onClickInventario(MouseEvent event) {
-
+        App.newStage("ProductosEmpleado","Agregar Productos");
     }
         public static String producto;
 
@@ -99,11 +86,11 @@ public class HomeEmpleado {
 
     }
 
-    Empleado emple = new Empleado("david","1234","","","","");
+    String usuary = Empleado.getUsuarioSelect();
 
     @FXML
     void initialize() {
-        usuario.setText(emple.getId());
+        usuario.setText(usuary);
         buscador.clear();
     }
 

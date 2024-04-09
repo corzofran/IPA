@@ -77,6 +77,7 @@ public class Beneficiarios implements Initializable {
 
     private ValidationSupport validacion;
 
+    //francisco
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         beneficiarios = FXCollections.observableArrayList();
@@ -207,10 +208,6 @@ public class Beneficiarios implements Initializable {
                     alert.setHeaderText(null);
                     alert.setContentText("Beneficiario modificado");
                     alert.showAndWait();
-                    txtCurp.clear();
-                    txtDireccion.clear();
-                    txtNombre.clear();
-                    txtNumero.clear();
 
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -278,7 +275,7 @@ public class Beneficiarios implements Initializable {
 
     @FXML
     void onClickInventario(MouseEvent event) {
-
+        App.newStage("ProductosAdministrador","Tabla de productos");
     }
 
     @FXML

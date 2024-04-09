@@ -7,23 +7,24 @@ public class Objetos extends Producto{
     private static ArrayList<String> productname = new ArrayList<>();
     private static ArrayList<Integer> productquantity = new ArrayList<>();
     private static ArrayList<String> productclasification = new ArrayList<>();
+
     public Objetos(String nombre, String cantidad, String clasificacion) {
         super(nombre, cantidad, clasificacion);
-
     }
 
-    public boolean addNombres(String nombre){
-        this.nombre = nombre;
+public Objetos(){
+
+}
+
+    public static boolean addNombres(String nombre){
         return productname.add(nombre);
     }
 
-    public boolean addCantidades(String cantidad){
-        this.cantidad = cantidad;
+    public static boolean addCantidades(String cantidad){
         return productquantity.add(Integer.valueOf(cantidad));
     }
 
-    public boolean addClasificaciones(String clasificacion){
-        this.clasificacion = clasificacion;
+    public static boolean addClasificaciones(String clasificacion){
         return productclasification.add(clasificacion);
     }
 
@@ -39,7 +40,5 @@ public class Objetos extends Producto{
         return productclasification;
     }
 
-    public Objetos() {
 
-    }
 }

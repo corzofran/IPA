@@ -16,11 +16,6 @@
    <children>
       <Pane layoutX="-2.0" prefHeight="147.0" prefWidth="1178.0" style="-fx-background-color: #E59056;">
          <children>
-            <ImageView fx:id="inventario" fitHeight="70.0" fitWidth="247.0" layoutX="17.0" layoutY="44.0" onMouseClicked="#onClickInventario" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../Imagenes/ButtonInventario.png" />
-               </image>
-            </ImageView>
             <ImageView fx:id="proveedor" fitHeight="87.0" fitWidth="221.0" layoutX="724.0" layoutY="37.0" onMouseClicked="#onClickProveedor" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Imagenes/ButtonProveedor.png" />
@@ -35,17 +30,17 @@
       </Pane>
       <Pane layoutX="864.0" layoutY="180.0" prefHeight="517.0" prefWidth="303.0" style="-fx-background-color: #A9D18E;">
          <children>
-            <ImageView fx:id="btnEliminarBeneficiario" fitHeight="60.0" fitWidth="144.0" layoutX="8.0" layoutY="388.0" onMouseClicked="#onClickEliminarBeneficiario" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btnEliminarBeneficiario" fitHeight="61.0" fitWidth="267.0" layoutX="18.0" layoutY="394.0" onMouseClicked="#onClickEliminarBeneficiario" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Imagenes/ButtonEliminarBeneficiario.png" />
+                  <Image url="@../../../Imagenes/ButtonEliminar.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="btnModificarDatos" fitHeight="60.0" fitWidth="144.0" layoutX="138.0" layoutY="429.0" onMouseClicked="#onClickModificarDatos" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btnModificarDatos" fitHeight="85.0" fitWidth="267.0" layoutX="20.0" layoutY="450.0" onMouseClicked="#onClickModificarDatos" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Imagenes/ButtonModificardatos.png" />
+                  <Image url="@../../../Imagenes/ButtonModificarProveedor.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="btnAnadirBeneficiario" fitHeight="70.0" fitWidth="144.0" layoutX="80.0" layoutY="328.0" onMouseClicked="#OnclickAnadirBeneficiario" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btnAnadirBeneficiario" fitHeight="58.0" fitWidth="267.0" layoutX="18.0" layoutY="337.0" onMouseClicked="#OnclickAnadirBeneficiario" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Imagenes/ButtonAñadirBeneficiario.png" />
                </image>
@@ -99,6 +94,11 @@
       <ImageView fx:id="empleado" fitHeight="87.0" fitWidth="221.0" layoutX="490.0" layoutY="37.0" onMouseClicked="#onClickEmpleado" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Imagenes/ButtonEmpleado.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="inventario" fitHeight="87.0" fitWidth="216.0" layoutX="20.0" layoutY="37.0" onMouseClicked="#onClickInventario" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/ButtonInventario.png" />
          </image>
       </ImageView>
    </children>

@@ -2,10 +2,12 @@ package com.davity.ipa.Controllers;
 
 import com.davity.ipa.App;
 import com.davity.ipa.Models.Empleado;
+import com.davity.ipa.Models.Usuario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.DropShadow;
@@ -15,9 +17,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import javafx.stage.Stage;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
 
@@ -97,9 +101,16 @@ public class Empleados implements Initializable {
 
     private ObservableList<Empleado> empleados;
 
-    Empleado e = new Empleado("","","","","","");
+    Empleado e = new Empleado("","","","","","","");
     String sexo = e.getSexo();
     String password = e.getPassword();
+
+    //ARRAYLIST DE ID Y CONTRASEÑAS DESDE LA CLASE USUARIO
+    Usuario u = new Usuario();
+    ArrayList<String> arrayId = u.getUsuario();
+    ArrayList<String> arrayPass = u.getContrasena();
+    ArrayList<String> arrayNames = Usuario.getRecuperarNames();
+
 
     private ValidationSupport validacion;
     @Override
@@ -141,7 +152,6 @@ public class Empleados implements Initializable {
               txtNumero.setText(oldValue);
           }
       });
-
     }
 
     @FXML
@@ -188,8 +198,18 @@ public class Empleados implements Initializable {
         String email = this.txtCorreo.getText();
         String numero = this.txtNumero.getText();
         String sexo = this.sexo;
+        String usuario=null;
 
-        Empleado empleoyee = new Empleado(id,password,name,email,numero,sexo);
+        if(numero.length() > 10 ){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error de validación");
+            alert.setHeaderText(null);
+            alert.setContentText("EL telefono tiene que ser 10 digitos");
+            alert.showAndWait();
+            return;
+        }else{
+
+        Empleado empleoyee = new Empleado(id,password,name,email,numero,sexo,usuario);
 
         boolean isValid = true;
         boolean vacio = false;
@@ -226,23 +246,39 @@ public class Empleados implements Initializable {
                         alert.setContentText("El correo es invalido");
                         alert.showAndWait();
                 } else {
-                    empleados.add(empleoyee);
-                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setTitle("AGREGADO");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Empleado/a agregado/a ✔");
-                    alert.showAndWait();
+                        empleados.add(empleoyee);
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        alert.setTitle("AGREGADO");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Empleado/a agregado/a ✔");
+                        alert.showAndWait();
 
-                    // limpiar
-                    txtNombre.clear();
-                    txtCorreo.clear();
-                    txtNumero.clear();
-                    txtid.clear();
-                    labelContrasenia.setText("");
+                        System.out.println(name);
+                        System.out.println(numero);
+                        System.out.println(email);
+                        System.out.println(sexo);
+                        System.out.println(password);
+                        System.out.println(id);
+                        System.out.println("");
+                        arrayId.add(id);
+                        arrayPass.add(password);
+                        arrayNames.add(name);
+
+                        //  IMPRESION EN CONSOLA PARA VERIFICAR
+                        System.out.println(arrayId);
+                        System.out.println(arrayPass);
+                        System.out.println(arrayNames);
+
+
+                        // limpiar
+                        txtNombre.clear();
+                        txtCorreo.clear();
+                        txtNumero.clear();
+                        txtid.clear();
+                        labelContrasenia.setText("");
+                    }
                 }
             }
-
-
     }
     @FXML
     void OnclickContrasenia(MouseEvent event) {
@@ -250,7 +286,7 @@ public class Empleados implements Initializable {
         password = "";
         Random random = new Random();
 
-        for(int i=0; i<6 ; i++){
+        for(int i=0; i<3 ; i++){
             int j = random.nextInt(characters.length());
             password = password + characters.charAt(j);
         }
@@ -289,8 +325,9 @@ public class Empleados implements Initializable {
                 String number = this.txtNumero.getText();
                 String pass = this.password;
                 String genero = this.sexo;
+                String usuario=null;
 
-                Empleado empleado = new Empleado(id, pass, name, email, number, genero);
+                Empleado empleado = new Empleado(id, pass, name, email, number, genero,usuario);
 
 
                 if (!txtCorreo.getText().contains("@") || !txtCorreo.getText().contains(".com")) {
@@ -306,6 +343,7 @@ public class Empleados implements Initializable {
                         e.setCorreo(empleado.getCorreo());
                         e.setNumeroTelefonico(empleado.getNumeroTelefonico());
                         e.setId(empleado.getId());
+                        e.setPassword(empleado.getPassword());
 
                         this.tablaEmpleados.refresh();
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -313,6 +351,17 @@ public class Empleados implements Initializable {
                         alert.setHeaderText(null);
                         alert.setContentText("Empleado/a modificado/a");
                         alert.showAndWait();
+
+                        int position = empleados.indexOf(e);
+                        System.out.println(position);
+
+                        arrayId.set(position, id);
+                        arrayPass.set(position, password);
+                        arrayNames.set(position, name);
+                        System.out.println(arrayId);
+                        System.out.println(arrayPass);
+                        System.out.println(arrayNames);
+
                     } else {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Error");
@@ -356,7 +405,6 @@ public class Empleados implements Initializable {
 
     @FXML
     void OnclickUsuario(MouseEvent event) {
-
     }
 
     @FXML
@@ -371,12 +419,18 @@ public class Empleados implements Initializable {
 
     @FXML
     void onClickInventario(MouseEvent event) {
-
+        App.newStage("ProductosAdministrador","Tabla de productos");
     }
 
     @FXML
     void onClickProveedor(MouseEvent event) {
         App.newStage("Proveedores","Tabla de proveedores");
+    }
+
+
+    @FXML
+    void OnclickInicio(MouseEvent event) {
+        App.newStage("HomeAdministrador","Bienvenido Administrador");
     }
 
 }

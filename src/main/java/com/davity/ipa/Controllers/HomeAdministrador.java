@@ -6,24 +6,24 @@ import java.util.ResourceBundle;
 
 import com.davity.ipa.App;
 import com.davity.ipa.Models.Objetos;
+import com.davity.ipa.Models.Usuario;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class HomeAdministrador {
+public class HomeAdministrador implements HomeAdministradorInterface{
 
     @FXML
     private ResourceBundle resources;
 
     @FXML
     private URL location;
-
-    @FXML
-    private ImageView agregar;
 
     @FXML
     private ImageView beneficiario;
@@ -56,45 +56,45 @@ public class HomeAdministrador {
     private Text usuario;
 
     @FXML
-    void onClickAgregar(MouseEvent event) {
+    private Text txtNotification;
 
+    ArrayList<String> nameproduct = Objetos.getProductnames();
+    Usuario u = new Usuario();
+    int notificacion = Usuario.getNotificacion();
+    @FXML
+   public void onClickBeneficiario(MouseEvent event) {
+        App.newStage("Beneficiario", "agregar beneficiarios");
     }
 
     @FXML
-    void onClickBeneficiario(MouseEvent event) {
-       App.newStage("Beneficiario","agregar beneficiarios");
-    }
-
-    @FXML
-    void onClickCerrarSesion(MouseEvent event) {
+    public void onClickCerrarSesion(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
 
     @FXML
-    void onClickEliminar(MouseEvent event) {
+    public void onClickEliminar(MouseEvent event) {
 
     }
 
     @FXML
-    void onClickEmpleado(MouseEvent event) {
-        App.newStage("Empleados","Tabla de empleados");
+    public void onClickEmpleado(MouseEvent event) {
+        App.newStage("Empleados", "Tabla de empleados");
     }
 
     @FXML
-    void onClickInventario(MouseEvent event) {
-        App.newStage("ProductosAdministrador","Inventario");
+    public void onClickInventario(MouseEvent event) {
+        App.newStage("ProductosAdministrador", "Inventario");
     }
 
     @FXML
-    void onClickProveedor(MouseEvent event) {
-        App.newStage("Proveedores","Proveedores");
+   public void onClickProveedor(MouseEvent event) {
+        App.newStage("Proveedores", "Proveedores");
     }
 
     @FXML
-    void onClickbuscar(MouseEvent event) {
+    public void onClickbuscar(MouseEvent event) {
         String textfield = buscador.getText();
-        ArrayList<String> nameproduct = Objetos.getProductnames();
 
         boolean encontrado = false;
         for (int i = 0; i < nameproduct.size(); i++) {
@@ -104,22 +104,77 @@ public class HomeAdministrador {
                 ProductoEncontradoAdmin.setArrayPosicion(i);
                 System.out.println(i);
                 buscador.clear();
-              App.newStage("ProductoEncontradoAdmin","Producto encontrado");
+                App.newStage("ProductoEncontradoAdmin", "Producto encontrado");
                 break;
             }
         }
 
         if (!encontrado) {
             buscador.clear();
-           App.newStage("ProductoNoEncontradoAdmin","No existe este producto");
+            App.newStage("ProductoNoEncontradoAdmin", "No existe este producto");
         }
     }
 
     @FXML
-    void initialize() {
-        buscador.clear();
+    void OnclickNotification(MouseEvent event) {
+
     }
 
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        txtNotification.setText(String.valueOf(notificacion));
+        buscador.clear();
+
+        beneficiario.setOnMouseEntered(event -> {
+            beneficiario.setEffect(new DropShadow());
+        });
+
+        beneficiario.setOnMouseExited(event -> {
+            beneficiario.setEffect(null);
+        });
+
+
+        inventario.setOnMouseEntered(event -> {
+            inventario.setEffect(new DropShadow());
+        });
+
+        inventario.setOnMouseExited(event -> {
+            inventario.setEffect(null);
+        });
+
+        empleado.setOnMouseEntered(event -> {
+            empleado.setEffect(new DropShadow());
+        });
+
+        empleado.setOnMouseExited(event -> {
+            empleado.setEffect(null);
+        });
+
+        proveedor.setOnMouseEntered(event ->{
+            proveedor.setEffect(new DropShadow());
+        });
+
+        proveedor.setOnMouseExited(event ->{
+            proveedor.setEffect(null);
+        });
+
+        buscar.setOnMouseEntered(event ->{
+            buscar.setEffect(new InnerShadow());
+        });
+
+        buscar.setOnMouseExited(event ->{
+            buscar.setEffect(null);
+        });
+
+        cerrarSesion.setOnMouseEntered(event -> {
+            cerrarSesion.setEffect(new DropShadow());
+        });
+
+        cerrarSesion.setOnMouseExited(event -> {
+            cerrarSesion.setEffect(null);
+        });
+    }
 }
 
 

@@ -11,6 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
@@ -74,6 +75,14 @@ public class Proveedores implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        inicio.setOnMouseEntered(event ->{
+            inicio.setEffect(new DropShadow());
+        });
+
+        inicio.setOnMouseExited(event ->{
+            inicio.setEffect(null);
+        });
+
         provedores = FXCollections.observableArrayList();
         tablaProveedores.setItems(provedores);
 
@@ -95,6 +104,20 @@ public class Proveedores implements Initializable {
                 txtNumero.setText(oldValue);
             }
         });
+
+        txtNombre.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.matches("\\d+")) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Solo puedes ingresar texto");
+                alert.showAndWait();
+
+                txtNombre.setText(oldValue);
+            }
+        });
+
+
     }
 
     @FXML
@@ -253,8 +276,8 @@ public class Proveedores implements Initializable {
     }
 
     @FXML
-    void onClickEliminar(MouseEvent event) {
-
+    void onClickInicio(MouseEvent event) {
+        App.newStage("HomeAdministrador","Bienvenido Administrador");
     }
 
     @FXML
@@ -264,7 +287,7 @@ public class Proveedores implements Initializable {
 
     @FXML
     void onClickInventario(MouseEvent event) {
-
+        App.newStage("ProductosAdministrador","Tabla de productos");
     }
 
     @FXML
