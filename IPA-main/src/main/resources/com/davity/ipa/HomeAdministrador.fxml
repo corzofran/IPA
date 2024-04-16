@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="674.0" prefWidth="1168.0" style="-fx-background-color: #F4B183;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.davity.ipa.Controllers.HomeAdministrador">
+   <children>
+      <Pane layoutX="-1.0" prefHeight="147.0" prefWidth="1178.0" style="-fx-background-color: #E59056;">
+         <children>
+            <ImageView fx:id="inventario" fitHeight="87.0" fitWidth="216.0" layoutX="27.0" layoutY="36.0" onMouseClicked="#onClickInventario" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ButtonInventario.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="beneficiario" fitHeight="87.0" fitWidth="221.0" layoutX="263.0" layoutY="36.0" onMouseClicked="#onClickBeneficiario" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ButtonBeneficiario.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="empleado" fitHeight="87.0" fitWidth="221.0" layoutX="490.0" layoutY="36.0" onMouseClicked="#onClickEmpleado" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ButtonEmpleado.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="proveedor" fitHeight="87.0" fitWidth="221.0" layoutX="727.0" layoutY="36.0" onMouseClicked="#onClickProveedor" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ButtonProveedor.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="inicio" fitHeight="117.0" fitWidth="228.0" layoutX="957.0" layoutY="20.0" onMouseClicked="#onClickEliminar" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/ButtonInicioBrillo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <ImageView fx:id="buscar" fitHeight="90.0" fitWidth="248.0" layoutX="162.0" layoutY="422.0" onMouseClicked="#onClickbuscar" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/ButtonBuscarAdmin.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <TextField fx:id="buscador" layoutX="67.0" layoutY="359.0" prefHeight="58.0" prefWidth="437.0" />
+      <Text fill="WHITE" layoutX="51.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventario de productos">
+         <font>
+            <Font name="Arial Bold" size="53.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="272.0" fitWidth="258.0" layoutX="655.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/logo1.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="50.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="y alimentos">
+         <font>
+            <Font name="Arial Bold" size="53.0" />
+         </font>
+      </Text>
+      <Text fx:id="usuario" fill="WHITE" layoutX="301.0" layoutY="639.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="437.6000000000001">
+         <font>
+            <Font name="System Bold" size="52.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="cerrarSesion" fitHeight="82.0" fitWidth="243.0" layoutX="982.0" layoutY="580.0" onMouseClicked="#onClickCerrarSesion" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/ButtonCerrarSesion.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="272.0" fitWidth="258.0" layoutX="665.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/logo1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="notification" fitHeight="140.0" fitWidth="65.0" layoutX="1079.0" layoutY="158.0" onMouseClicked="#OnclickNotification" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/notificacion.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="txtNotification" fill="RED" layoutX="1078.0" layoutY="181.0" stroke="#ac7a7a" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="76.2257080078125">
+         <font>
+            <Font name="Impact" size="30.0" />
+         </font>
+      </Text>
+      <Text fill="#ff5656" layoutX="46.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresa el nombre del producto para buscar">
+         <font>
+            <Font name="Arial Bold" size="23.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="120.0" fitWidth="118.0" layoutX="12.0" layoutY="549.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/administrador.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

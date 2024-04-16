@@ -1,9 +1,9 @@
 package com.davity.ipa;
 
-import com.davity.ipa.Controllers.Empleados;
-import com.davity.ipa.Models.Empleado;
+import com.davity.ipa.Controllers.Proveedores;
+import com.davity.ipa.Models.Persona;
+import com.davity.ipa.Models.Proveedor;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,7 +13,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.kordamp.bootstrapfx.BootstrapFX;
-
+import javafx.collections.FXCollections;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,21 +23,62 @@ import java.util.logging.Logger;
 public class App extends Application {
     private static Stage stageView;
     private static Stage stageRoot;
+    private static int notificar;
+
+    private static ArrayList<String> productname = new ArrayList<>();
+    private static ArrayList<Integer> productquantity = new ArrayList<>();
+    private static ArrayList<String> productclasification = new ArrayList<>();
+    private static ArrayList<String> productmark = new ArrayList<>();
+
+    public static boolean addNombres(String nombre){
+        return productname.add(nombre);
+    }
+
+    public static boolean addCantidades(String cantidad){
+        return productquantity.add(Integer.valueOf(cantidad));
+    }
+
+    public static boolean addClasificaciones(String clasificacion){
+        return productclasification.add(clasificacion);
+    }
+
+    public static boolean addMarks(String marca){
+        return productmark.add(marca);
+    }
+
+    public static ArrayList<String> getProductnames() {
+        return productname;
+    }
+
+    public static ArrayList<Integer> getProductquantitys() {
+        return productquantity;
+    }
+
+    public static ArrayList<String> getProductclasifications() {
+        return productclasification;
+    }
+
+    public static ArrayList<String> getProductmark() {
+        return productmark;
+    }
 
     @Override
     public void start(Stage stage) throws IOException {
-
+        stageRoot = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("InicioSesion.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Inventario de Productos Alimenticios (IPA)" +
-                "                                                                                                     Iniciar sesion");
+        Parent root = fxmlLoader.load();
+
+        Scene scene = new Scene(root);
+        stage.setTitle("Inventario de Productos Alimenticios (IPA) - Iniciar sesión");
         stage.setScene(scene);
         stage.centerOnScreen();
-        stage.show();
-        stage.setResizable(false); //QUITAR LOS ESTIRAMIENTOS
+        stage.setResizable(false);
 
         Image image = new Image(getClass().getResourceAsStream("/logo/caja.png"));
         stage.getIcons().add(image);
+
+
+        stage.show();
 
     }
 
@@ -69,7 +110,9 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
+
     public static void main(String[] args) {
-        launch();
+
+        launch(args);
     }
 }

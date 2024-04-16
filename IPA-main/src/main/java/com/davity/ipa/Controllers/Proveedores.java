@@ -72,6 +72,10 @@ public class Proveedores implements Initializable {
     private TableView<Proveedor> tablaProveedores;
 
     private ObservableList<Proveedor> provedores;
+    public void setProveedores(ObservableList<Proveedor> proveedores) {
+        this.provedores = proveedores;
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -157,26 +161,36 @@ public class Proveedores implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("No puedes dejar campos vacios");
                 alert.showAndWait();
+            }else
+            if(number.length() != 10 ) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error de validación");
+                alert.setHeaderText(null);
+                alert.setContentText("EL telefono tiene que ser 10 digitos");
+                alert.showAndWait();
+                return;
             }else {
+                {
 
-                if (!txtCorreo.getText().contains("@") || !txtCorreo.getText().contains(".")) {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("CORREO INVALIDO");
-                    alert.setHeaderText(null);
-                    alert.setContentText("El correo es invalido");
-                    alert.showAndWait();
-                } else {
-                    provedores.add(p);
-                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setTitle("Agregado");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Proveedor agregado exitosamente ✔");
-                    alert.showAndWait();
+                    if (!txtCorreo.getText().contains("@") || !txtCorreo.getText().contains(".com")) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("CORREO INVALIDO");
+                        alert.setHeaderText(null);
+                        alert.setContentText("El correo es invalido");
+                        alert.showAndWait();
+                    } else {
+                        provedores.add(p);
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        alert.setTitle("Agregado");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Proveedor agregado exitosamente ✔");
+                        alert.showAndWait();
 
-                    txtNombre.clear();
-                    txtCorreo.clear();
-                    txtDireccion.clear();
-                    txtNumero.clear();
+                        txtNombre.clear();
+                        txtCorreo.clear();
+                        txtDireccion.clear();
+                        txtNumero.clear();
+                    }
                 }
             }
         }

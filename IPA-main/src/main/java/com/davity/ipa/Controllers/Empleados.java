@@ -99,10 +99,7 @@ public class Empleados implements Initializable {
     @FXML
     private TableView<Empleado> tablaEmpleados;
 
-    App app = new App();
-
     private ObservableList<Empleado> empleados;
-
     Empleado e = new Empleado("","","","","","","");
     String sexo = e.getSexo();
     String password = e.getPassword();
@@ -112,8 +109,8 @@ public class Empleados implements Initializable {
     ArrayList<String> arrayId = u.getUsuario();
     ArrayList<String> arrayPass = u.getContrasena();
     ArrayList<String> arrayNames = Usuario.getRecuperarNames();
-    private ValidationSupport validacion;
 
+    private ValidationSupport validacion;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         empleados = FXCollections.observableArrayList();
@@ -140,6 +137,17 @@ public class Empleados implements Initializable {
       validacion.registerValidator(txtNumero, true, numeroValidator);
       validacion.registerValidator(txtid, true, idValidator);
 
+        txtNombre.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.matches("\\d+")) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Solo puedes ingresar texto");
+                alert.showAndWait();
+
+                txtNombre.setText(oldValue);
+            }
+        });
 
       txtNumero.textProperty().addListener((observable, oldValue, newValue) -> {
 
@@ -163,11 +171,7 @@ public class Empleados implements Initializable {
         dropShadow.setSpread(0.7); // Extensión del borde iluminado
         btnHombre.setOnMouseClicked(event -> {btnHombre.setEffect(dropShadow);});
         /////////////////// eliminar el color del boton de la mujer porque solo puede elegir 1 genero
-        DropShadow dropShadow2 = new DropShadow();
-        dropShadow2.setColor(Color.GRAY);
-        dropShadow2.setRadius(0);
-        dropShadow2.setSpread(0);
-        btnMujer.setEffect(dropShadow2);
+        btnMujer.setEffect(null);
         //////////////////
 
 
@@ -182,11 +186,7 @@ public class Empleados implements Initializable {
         dropShadow.setSpread(0.7); // Extensión del borde iluminado
         btnMujer.setOnMouseClicked(event -> {btnMujer.setEffect(dropShadow);});
         /////////////////// eliminar el color del boton del hombre porque solo puede elegir 1 genero
-        DropShadow dropShadow2 = new DropShadow();
-        dropShadow2.setColor(Color.GRAY);
-        dropShadow2.setRadius(0);
-        dropShadow2.setSpread(0);
-        btnHombre.setEffect(dropShadow2);
+        btnHombre.setEffect(null);
         //////////////////
         sexo = "Mujer";
     }
@@ -201,87 +201,90 @@ public class Empleados implements Initializable {
         String sexo = this.sexo;
         String usuario=null;
 
-        if(numero.length() > 10 ){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error de validación");
-            alert.setHeaderText(null);
-            alert.setContentText("EL telefono tiene que ser 10 digitos");
-            alert.showAndWait();
-            return;
-        }else{
+            Empleado empleoyee = new Empleado(id, password, name, email, numero, sexo, usuario);
 
-        Empleado empleoyee = new Empleado(id,password,name,email,numero,sexo,usuario);
-
-        boolean isValid = true;
-        boolean vacio = false;
-        String errorMessage = "";
+            boolean isValid = true;
+            boolean vacio = false;
+            String errorMessage = "";
 
 
-        if (id.isEmpty() || password.isEmpty() || name.isEmpty() || email.isEmpty() || numero.isEmpty() || sexo.isEmpty()) {
-            isValid = false;
-            errorMessage = "Por favor, complete todos los campos.";
-        }
-
-
-        if (isValid) {
-            for (Empleado e : empleados) {
-                if (e.getNombre().equals(empleoyee.getNombre()) || e.getNumeroTelefonico().equals(empleoyee.getNumeroTelefonico())
-                        || e.getId().equals(empleoyee.getId())) {
-                    isValid = false;
-                    errorMessage = "Este empleado ya existe";
-                    break;
-                }
+            if (id.isEmpty() || password.isEmpty() ||  email.isEmpty() || numero.isEmpty())  {
+                isValid = false;
+                errorMessage = "Por favor, complete todos los campos.";
             }
-        }
-                if (!isValid) {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error de validación");
-                    alert.setHeaderText(null);
-                    alert.setContentText(errorMessage);
-                    alert.showAndWait();
-            }else{
-                    if (!txtCorreo.getText().contains("@") || !txtCorreo.getText().contains(".")) {
+
+                    if (isValid) {
+                        for (Empleado e : empleados) {
+                            if (e.getNombre().equals(empleoyee.getNombre()) || e.getNumeroTelefonico().equals(empleoyee.getNumeroTelefonico())
+                                    || e.getId().equals(empleoyee.getId())) {
+                                isValid = false;
+                                errorMessage = "Este empleado ya existe o verifica que los datos no sean iguales";
+                                break;
+                            }
+                        }
+                    }
+                    if (!isValid) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Error de validación");
+                        alert.setHeaderText(null);
+                        alert.setContentText(errorMessage);
+                        alert.showAndWait();
+                    } else
+
+                    if (!txtCorreo.getText().contains("@") || !txtCorreo.getText().contains(".com")) {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("CORREO INVALIDO");
                         alert.setHeaderText(null);
                         alert.setContentText("El correo es invalido");
                         alert.showAndWait();
-                } else {
-                        empleados.add(empleoyee);
-                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                        alert.setTitle("AGREGADO");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Empleado/a agregado/a ✔");
-                        alert.showAndWait();
-                        btnHombre.setEffect(null);
-                        btnMujer.setEffect(null);
+                    } else {
 
-                        System.out.println(name);
-                        System.out.println(numero);
-                        System.out.println(email);
-                        System.out.println(sexo);
-                        System.out.println(password);
-                        System.out.println(id);
-                        System.out.println("");
-                        arrayId.add(id);
-                        arrayPass.add(password);
-                        arrayNames.add(name);
+                    {
+                        if  (numero.length() != 10) {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Error de validación");
+                            alert.setHeaderText(null);
+                            alert.setContentText("EL telefono tiene que ser 10 digitos");
+                            alert.showAndWait();
+                            return;
+                        } else {
+                            empleados.add(empleoyee);
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setTitle("AGREGADO");
+                            alert.setHeaderText(null);
+                            alert.setContentText("Empleado/a agregado/a ✔");
+                            alert.showAndWait();
 
-                        //  IMPRESION EN CONSOLA PARA VERIFICAR
-                        System.out.println(arrayId);
-                        System.out.println(arrayPass);
-                        System.out.println(arrayNames);
+                            System.out.println(name);
+                            System.out.println(numero);
+                            System.out.println(email);
+                            System.out.println(sexo);
+                            System.out.println(password);
+                            System.out.println(id);
+                            System.out.println("");
+                            arrayId.add(id);
+                            arrayPass.add(password);
+                            arrayNames.add(name);
+
+                            //  IMPRESION EN CONSOLA PARA VERIFICAR
+                            System.out.println(arrayId);
+                            System.out.println(arrayPass);
+                            System.out.println(arrayNames);
 
 
-                        // limpiar
-                        txtNombre.clear();
-                        txtCorreo.clear();
-                        txtNumero.clear();
-                        txtid.clear();
-                        labelContrasenia.setText("");
+                            // limpiar
+                            txtNombre.clear();
+                            txtCorreo.clear();
+                            txtNumero.clear();
+                            txtid.clear();
+                            labelContrasenia.setText("");
+                            btnHombre.setEffect(null);
+                            btnMujer.setEffect(null);
+                            sexo = null;
+                        }
                     }
-                }
-            }
+
+        }
     }
     @FXML
     void OnclickContrasenia(MouseEvent event) {

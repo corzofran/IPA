@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="730.0" prefWidth="506.0" style="-fx-background-color: #F4AF80;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.davity.ipa.Controllers.AgregarBeneficiario">
+   <children>
+      <TextField fx:id="txtNombre" layoutX="63.0" layoutY="102.0" prefHeight="43.0" prefWidth="378.0" />
+      <Text fill="WHITE" layoutX="62.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre completo">
+         <font>
+            <Font name="Arial Black" size="28.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtDomicilio" layoutX="63.0" layoutY="228.0" prefHeight="43.0" prefWidth="378.0" />
+      <Text fill="WHITE" layoutX="62.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lugar de domicilio">
+         <font>
+            <Font name="Arial Black" size="28.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtNumero" layoutX="63.0" layoutY="353.0" prefHeight="43.0" prefWidth="378.0" />
+      <Text fill="WHITE" layoutX="62.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero telefonico">
+         <font>
+            <Font name="Arial Black" size="28.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtCurp" layoutX="64.0" layoutY="471.0" prefHeight="43.0" prefWidth="378.0" />
+      <Text fill="WHITE" layoutX="63.0" layoutY="453.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Curp">
+         <font>
+            <Font name="Arial Black" size="28.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="btnGuardar" fitHeight="87.0" fitWidth="325.0" layoutX="91.0" layoutY="560.0" onMouseClicked="#guardar" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/ButtonGuardarLargo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="btnSalir" fitHeight="75.0" fitWidth="325.0" layoutX="91.0" layoutY="633.0" onMouseClicked="#salir" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/ButtonSalir.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

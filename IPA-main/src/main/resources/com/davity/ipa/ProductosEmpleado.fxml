@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="674.0" prefWidth="1168.0" style="-fx-background-color: #FF6D6D;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.davity.ipa.Controllers.ProductosEmpleado">
+   <children>
+      <Text fill="WHITE" layoutX="47.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agregar nuevo producto">
+         <font>
+            <Font name="System Bold" size="37.0" />
+         </font></Text>
+      <TextField fx:id="nombre" alignment="CENTER" layoutX="50.0" layoutY="236.0" prefHeight="49.0" prefWidth="417.0" promptText="Nombre del producto" style="-fx-background-color: white;">
+         <font>
+            <Font name="Arial Black" size="24.0" />
+         </font></TextField>
+      <TextField fx:id="cantidad" alignment="CENTER" layoutX="50.0" layoutY="306.0" prefHeight="49.0" prefWidth="417.0" promptText="Cantidad del producto" style="-fx-background-color: white;">
+         <font>
+            <Font name="Arial Black" size="24.0" />
+         </font></TextField>
+      <TextField fx:id="clasificacion" alignment="CENTER" layoutX="50.0" layoutY="373.0" prefHeight="49.0" prefWidth="417.0" promptText="Clasificacion" style="-fx-background-color: white;">
+         <font>
+            <Font name="Arial Black" size="24.0" />
+         </font></TextField>
+      <Pane layoutY="1.0" prefHeight="147.0" prefWidth="1183.0" style="-fx-background-color: #FF5050;" />
+      <ImageView fx:id="cancelar" fitHeight="69.0" fitWidth="209.0" layoutX="20.0" layoutY="591.0" onMouseClicked="#onClickCancelar" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/ButtonRegresar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="guardar" fitHeight="86.0" fitWidth="214.0" layoutX="509.0" layoutY="599.0" onMouseClicked="#onClickguardar" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/ButtonGuardar.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tablaProductos" layoutX="510.0" layoutY="179.0" onMouseClicked="#onClickSeleccionarTabla" prefHeight="406.0" prefWidth="655.0">
+        <columns>
+          <TableColumn fx:id="columnaNombre" prefWidth="192.800048828125" text="Nombre del producto" />
+          <TableColumn fx:id="columnaCantidad" prefWidth="153.5999755859375" text="Cantidad" />
+            <TableColumn fx:id="columnaClasificacion" prefWidth="145.5999755859375" text="Clasificación" />
+            <TableColumn fx:id="columnaMarca" prefWidth="162.4000122070313" text="Marca" />
+        </columns>
+      </TableView>
+      <ImageView fx:id="modificar" fitHeight="86.0" fitWidth="214.0" layoutX="730.0" layoutY="605.0" onMouseClicked="#onClickmodificar" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/ButtonModificarProducto.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="eliminarProducto" fitHeight="86.0" fitWidth="214.0" layoutX="952.0" layoutY="600.0" onMouseClicked="#onClickEliminar" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/ButtonEliminarProducto.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="200.0" fitWidth="201.0" layoutX="253.0" layoutY="482.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/cajaAbierta.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="inventario" fitHeight="95.0" fitWidth="258.0" layoutX="30.0" layoutY="29.0" onMouseClicked="#onClickInventario" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Imagenes/ButtonInventario.png" />
+         </image>
+         <effect>
+            <DropShadow height="65.45" radius="36.905" spread="0.52" width="84.17">
+               <color>
+                  <Color red="0.7368420958518982" green="0.7150097489356995" blue="0.7150097489356995" />
+               </color>
+            </DropShadow>
+         </effect>
+      </ImageView>
+      <TextField fx:id="marca" alignment="CENTER" layoutX="50.0" layoutY="441.0" prefHeight="49.0" prefWidth="417.0" promptText="Marca" style="-fx-background-color: white;">
+         <font>
+            <Font name="Arial Black" size="24.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="120.0" fitWidth="115.0" layoutX="1048.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../logo/ipa.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
