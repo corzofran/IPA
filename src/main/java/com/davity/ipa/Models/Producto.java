@@ -61,7 +61,6 @@ public Producto(){
         this.positionElimined = positionElimined;
     }
 
-    ////////////////////////////////////
 
 
     public String getNombre() {

@@ -2,6 +2,7 @@ package com.davity.ipa;
 
 import com.davity.ipa.Controllers.Empleados;
 import com.davity.ipa.Models.Empleado;
+import com.davity.ipa.Models.Persona;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

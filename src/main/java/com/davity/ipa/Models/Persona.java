@@ -1,19 +1,10 @@
 package com.davity.ipa.Models;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-
-import java.util.Objects;
-
 public class Persona {
-
- protected String nombre;
- protected String numeroTelefono;
- protected String direccion;
- protected String correo;
-
+    private String nombre;
+    private String numeroTelefono;
+    private String direccion;
+    private String correo;
 
     public Persona(String nombre, String numeroTelefono, String direccion, String correo) {
         this.nombre = nombre;
@@ -22,6 +13,7 @@ public class Persona {
         this.correo = correo;
     }
 
+    // Getters y Setters
     public String getNombre() {
         return nombre;
     }
